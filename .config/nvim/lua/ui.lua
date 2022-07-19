@@ -10,6 +10,7 @@ require('telescope').setup({
   defaults = {
   layout_strategy = 'vertical',
   color_devicons = true,
+  path_display = { "truncate" },
   mappings = {
     n = {
       ['<C-d>'] = require('telescope.actions').delete_buffer,

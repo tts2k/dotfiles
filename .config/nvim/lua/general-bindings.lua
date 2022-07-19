@@ -14,10 +14,16 @@ local telescopeOpts = function(opts)
 end
 
 -- Execute telescope builtins 
-local execTelescopeBuiltIn = function(cmd, opts)
+local execTelescopeBuiltIn = function(cmd, opts, theme)
   local builtin = require('telescope.builtin')
-  opts = telescopeOpts(opts)
-  builtin[cmd](opts)
+
+  -- Use theme if specified
+  if (theme == nil) then
+    opts = telescopeOpts(opts)
+    builtin[cmd](opts)
+  else
+    builtin[cmd](require('telescope.themes')[theme]())
+  end
 end
 
 -- Execute telescope extensions 
@@ -57,13 +63,13 @@ nmap('<Leader>/', function() execTelescopeBuiltIn('current_buffer_fuzzy_find') e
 nmap('<Leader>v', function() execTelescopeExt('file_browser', { path = '~/.config/nvim/lua' }) end, 'Open vim config directory')
 
 -- Lsp
-nnoremap('<Leader>fm', '<cmd>Telescope marks<CR>', 'Show list of marks')
-nnoremap('<Leader>fd', '<cmd>Telescope lsp_definitions theme=get_cursor<CR>', 'Show definitions')
-nnoremap('<Leader>fi', '<cmd>Telescope lsp_implementations theme=get_cursor<CR>', 'Show implementations')
-nnoremap('<Leader>fr', '<cmd>Telescope lsp_references theme=get_cursor<CR>', 'Show references')
+nnoremap('<Leader>fm', function() execTelescopeBuiltIn('marks') end, 'Show list of marks')
+nnoremap('<Leader>fd', function() execTelescopeBuiltIn('lsp_definitions', nil, 'get_cursor') end, 'Show definitions')
+nnoremap('<Leader>fi', function() execTelescopeBuiltIn('lsp_implementations', nil, 'get_cursor') end, 'Show implementations')
+nnoremap('<Leader>fr', function() execTelescopeBuiltIn('lsp_references', nil, 'get_cursor') end, 'Show references')
 
 -- Code format
-nnoremap('<Leader> ff', '<cmd>lua vim.lsp.buf.formatting()<CR>', 'Format current buffer')
+nnoremap('<Leader> ff', function() vim.lsp.buf.formatting() end, 'Format current buffer')
 
 -- File manager
-nnoremap('<Leader>n', '<cmd>NvimTreeToggle<CR>', 'Open side file manager')
+nnoremap('<Leader>n', function() require('nvim-tree').toggle() end, 'Open side file manager')
