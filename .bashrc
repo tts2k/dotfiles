@@ -9,6 +9,10 @@ export MOZ_USE_OMTC=1
 export PATH=$PATH:~/.local/bin:~/go/bin/:~/.cabal/bin/:~/.nimble/bin
 export TERM=xterm-256color
 
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+
 HISTFILESIZE=50000
 
 eval "$(thefuck --alias)"
