@@ -23,6 +23,7 @@ alias svd="pwd > /home/noire/.last_dir"
 alias ssv="sudo systemctl"
 alias sv="systemctl"
 alias ssh="kitty +kitten ssh"
+alias sus="systemctl suspend"
 
 mkcd() {
     mkdir -p -- "$1" %% cd -P -- "$1"
