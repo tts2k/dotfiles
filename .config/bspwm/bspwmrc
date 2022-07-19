@@ -5,6 +5,7 @@ dunst &
 feh --bg-scale ~/Pictures/wallpaper/6e93a5_7407210.jpg &
 polybar main &
 picom --experimental-backends -b &
+xsetroot -cursor_name left_ptr &
 keepassxc &
 
 # settings
