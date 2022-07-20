@@ -40,7 +40,7 @@ vim.g.mapleader = " "
 nmap('<Leader>a', 'ggVG', 'Select all')
 
 -- System clipboard interaction
-vmap('<C-y>', '"+y<CR>', 'Copy to clipboard')
+vmap('<C-y>', '"+y', 'Copy to clipboard')
 nmap('<C-p>', '"+p', 'Paste from clipboard')
 
 -- Window navigation
@@ -61,15 +61,13 @@ nmap('<Leader>p', function() execTelescopeBuiltIn('fd') end, 'Find files')
 nmap('<Leader>;', function() execTelescopeBuiltIn('buffers') end, 'List buffers')
 nmap('<Leader>/', function() execTelescopeBuiltIn('current_buffer_fuzzy_find') end, 'Current buffer fuzzy find')
 nmap('<Leader>v', function() execTelescopeExt('file_browser', { path = '~/.config/nvim/lua' }) end, 'Open vim config directory')
-
--- Lsp
 nnoremap('<Leader>fm', function() execTelescopeBuiltIn('marks') end, 'Show list of marks')
 nnoremap('<Leader>fd', function() execTelescopeBuiltIn('lsp_definitions', nil, 'get_cursor') end, 'Show definitions')
 nnoremap('<Leader>fi', function() execTelescopeBuiltIn('lsp_implementations', nil, 'get_cursor') end, 'Show implementations')
 nnoremap('<Leader>fr', function() execTelescopeBuiltIn('lsp_references', nil, 'get_cursor') end, 'Show references')
 
 -- Code format
-nnoremap('<Leader> ff', function() vim.lsp.buf.formatting() end, 'Format current buffer')
+nnoremap('<Leader>ff', function() vim.lsp.buf.formatting() end, 'Format current buffer')
 
 -- File manager
 nnoremap('<Leader>n', function() require('nvim-tree').toggle() end, 'Open side file manager')
