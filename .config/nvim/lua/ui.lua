@@ -108,6 +108,6 @@ db.custom_center = {
 
 -- One-line plugins
 require('lualine').setup()
-require('nvim-tree').setup()
+require('nvim-tree').setup { view = { relativenumber = true }}
 require('gitsigns').setup()
 require('which-key').setup()
