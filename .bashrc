@@ -1,5 +1,4 @@
-source /usr/share/fzf/key-bindings.bash
-source /usr/share/fzf/completion.bash
+source /usr/share/fzf/shell/key-bindings.bash
 export PS1="\[$(tput setaf 6)\]\w \\[$(tput setaf 2)\]\$ \[$(tput sgr0)\]"
 
 export EDITOR=nvim
