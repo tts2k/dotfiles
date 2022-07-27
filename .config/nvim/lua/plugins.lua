@@ -41,7 +41,7 @@ return require('packer').startup(function(use)
   use 'numToStr/Comment.nvim'
   use 'windwp/nvim-autopairs'
   use 'kyazdani42/nvim-web-devicons'
-  use { 'williamboman/mason.nvim', branch = 'alpha' }
+  use { 'williamboman/mason.nvim' }
   use 'lewis6991/gitsigns.nvim'
   use 'b0o/mapx.nvim'
   use 'folke/which-key.nvim'
