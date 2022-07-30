@@ -2,7 +2,7 @@ require('dapui').setup();
 
 local dap = require('dap')
 
--- Clangd (C/C++)
+-- cpptools (C/C++)
 dap.adapters.cppdbg = {
   id = 'cppdbg',
   type = 'executable',

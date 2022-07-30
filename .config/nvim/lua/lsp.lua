@@ -87,3 +87,12 @@ require('lspconfig')['sumneko_lua'].setup {
     },
   }
 }
+
+require('lspconfig')['rls'].setup({
+  capabilities = capabilities,
+  settings = {
+    unstable_features = true,
+    build_on_save = false,
+    all_features = true
+  }
+})
