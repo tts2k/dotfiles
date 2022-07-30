@@ -4,6 +4,11 @@ require("nvim-autopairs").setup {
   check_ts = true
 }
 
+-- Misc
+require('Comment').setup() -- Setup comment plugin
+require('luasnip.loaders.from_vscode').lazy_load() -- Setup friendly-snippets for luasnip
+
+-- Setup autocompletion
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local cmp = require("cmp")
 local luasnip = require("luasnip")
@@ -90,9 +95,4 @@ require('lspconfig')['sumneko_lua'].setup {
 
 require('lspconfig')['rls'].setup({
   capabilities = capabilities,
-  settings = {
-    unstable_features = true,
-    build_on_save = false,
-    all_features = true
-  }
 })

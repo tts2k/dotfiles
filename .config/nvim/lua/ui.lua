@@ -1,9 +1,32 @@
 require('indent_blankline').setup {
   show_current_context = true,
-  filetype_exclude = { "dashboard" }
+  filetype_exclude = { "dashboard" },
+  char = "¦",
+  context_char = "│",
+  context_patterns = {
+   "class",
+    "^func",
+    "method",
+    "^if",
+    "while",
+    "for",
+    "with",
+    "try",
+    "except",
+    "arguments",
+    "argument_list",
+    "object",
+    "dictionary",
+    "element",
+    "table",
+    "tuple",
+    "do_block",
+    "^.*_expression",
+    "let_declaration",
+    "block",
+    "^.*_block",
+  }
 }
-
-vim.g.indent_blankline_char = '¦'
 
 -- Telescope
 require('telescope').setup({

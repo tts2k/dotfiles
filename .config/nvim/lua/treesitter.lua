@@ -14,7 +14,7 @@ require"nvim-treesitter.configs".setup {
   },
   indent = {
     enable = true,
-    disable = { "cpp" }
+    disable = { "cpp", "rust" }
   },
   autotag = { enable = true },
   context_commentstring = {
