@@ -26,7 +26,7 @@ alias ssh="kitty +kitten ssh"
 alias sus="systemctl suspend"
 
 mkcd() {
-    mkdir -p -- "$1" %% cd -P -- "$1"
+    mkdir -p "$1" && cd -P "$1"
 }
 
 # BEGIN_KITTY_SHELL_INTEGRATION
