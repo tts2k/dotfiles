@@ -32,6 +32,8 @@ dap.configurations.cpp = {
     end,
   },
 }
+-- rust
+dap.configurations.rust = dap.configurations.cpp
 
 -- node-debug2-adapter (Node.js)
 dap.adapters.node2 = {
