@@ -2,7 +2,7 @@ require('dapui').setup();
 
 local dap = require('dap')
 
--- Clangd (C/C++)
+-- cpptools/gdb (C/C++)
 dap.adapters.cppdbg = {
   id = 'cppdbg',
   type = 'executable',
@@ -32,6 +32,8 @@ dap.configurations.cpp = {
     end,
   },
 }
+-- rust
+dap.configurations.rust = dap.configurations.cpp
 
 -- node-debug2-adapter (Node.js)
 dap.adapters.node2 = {
@@ -63,7 +65,7 @@ nnoremap('<Leader>du', function() require('dapui').toggle() end, 'DEBUG: Open de
 nnoremap('<Leader>dd', function() require'dap'.continue() end, 'DEBUG: Continue')
 nnoremap('<Leader>dr', function() require'dap'.run_last() end, 'DEBUG: Run last')
 nnoremap('<Leader>dt', function() require'dap'.toggle_breakpoint() end, 'DEBUG: Set breakpoint')
-nnoremap('<F5>', function() require'dap'.continue() end, 'silent','DEBUG Continue')
-nnoremap('<F10>', function() require'dap'.step_over() end, 'silent', 'DEBUG Step over')
-nnoremap('<F11>', function() require'dap'.step_into() end, 'silent', 'DEBUG Step into')
-nnoremap('<F12>', function() require'dap'.step_out() end, 'silent', 'DEBUG Step out')
+nnoremap('<F5>', function() require'dap'.continue() end, 'silent','DEBUG: Continue')
+nnoremap('<F10>', function() require'dap'.step_over() end, 'silent', 'DEBUG: Step over')
+nnoremap('<F11>', function() require'dap'.step_into() end, 'silent', 'DEBUG: Step into')
+nnoremap('<F12>', function() require'dap'.step_out() end, 'silent', 'DEBUG: Step out')

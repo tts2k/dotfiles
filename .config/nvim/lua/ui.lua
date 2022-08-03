@@ -1,9 +1,32 @@
 require('indent_blankline').setup {
   show_current_context = true,
-  filetype_exclude = { "dashboard" }
+  filetype_exclude = { "dashboard", "help" },
+  char = "¦",
+  context_char = "│",
+  context_patterns = {
+   "class",
+    "^func",
+    "method",
+    "^if",
+    "while",
+    "for",
+    "with",
+    "try",
+    "except",
+    "arguments",
+    "argument_list",
+    "object",
+    "dictionary",
+    "element",
+    "table",
+    "tuple",
+    "do_block",
+    "^.*_expression",
+    "let_declaration",
+    "block",
+    "^.*_block",
+  }
 }
-
-vim.g.indent_blankline_char = '¦'
 
 -- Telescope
 require('telescope').setup({
@@ -41,14 +64,15 @@ require('telescope').setup({
         '~/projects/'
       }
     },
-    media_files = {
-      filetypes = {"png", "webp", "jpg", "jpeg"}
+    ['ui-select'] = {
+      require('telescope.themes').get_dropdown()
     }
   }
 })
 require('telescope').load_extension('file_browser')
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('project')
+require('telescope').load_extension('ui-select')
 
 -- Dashboard
 local db = require('dashboard')
@@ -105,6 +129,26 @@ db.custom_center = {
   },
 }
 
+-- Lsp diagnostic icons
+vim.fn.sign_define(
+  'DiagnosticSignError',
+  { text = '', texthl = 'DiagnosticError' }
+)
+
+vim.fn.sign_define(
+  'DiagnosticSignWarn',
+  { text = '', texthl = 'DiagnosticWarn' }
+)
+
+vim.fn.sign_define(
+  'DiagnosticSignInfo',
+  { text = '', texthl = 'DiagnosticInfo' }
+)
+
+vim.fn.sign_define(
+  'DiagnosticSignHint',
+  { text = '', texthl = 'DiagnosticHint' }
+)
 
 -- One-line plugins
 require('lualine').setup()

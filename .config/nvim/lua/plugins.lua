@@ -7,7 +7,6 @@ return require('packer').startup(function(use)
 
   -- Langague support
   use 'neovim/nvim-lspconfig'
-  use 'williamboman/nvim-lsp-installer'
   -- nim
   use 'alaviss/nim.nvim'
   -- Arduino
@@ -41,10 +40,11 @@ return require('packer').startup(function(use)
   use 'numToStr/Comment.nvim'
   use 'windwp/nvim-autopairs'
   use 'kyazdani42/nvim-web-devicons'
-  use { 'williamboman/mason.nvim', branch = 'alpha' }
+  use { 'williamboman/mason.nvim' }
   use 'lewis6991/gitsigns.nvim'
   use 'b0o/mapx.nvim'
   use 'folke/which-key.nvim'
+  use 'folke/trouble.nvim'
 
   -- Telescope
   use 'nvim-lua/plenary.nvim'
@@ -55,6 +55,7 @@ return require('packer').startup(function(use)
   }
   use { 'nvim-telescope/telescope-file-browser.nvim' }
   use { 'nvim-telescope/telescope-project.nvim' }
+  use { 'nvim-telescope/telescope-ui-select.nvim' }
 
   -- Treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
