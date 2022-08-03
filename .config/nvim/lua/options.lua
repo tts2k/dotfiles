@@ -9,6 +9,7 @@ vim.opt.autoindent = true
 vim.opt.hidden = true
 vim.opt.termguicolors = true
 vim.opt.cursorline = true
+vim.opt.showmode = false
 
 vim.wo.wrap = false
 

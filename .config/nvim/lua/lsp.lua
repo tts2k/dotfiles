@@ -1,4 +1,5 @@
 require('mason').setup()
+require('trouble').setup()
 require("nvim-autopairs").setup {
   disable_filetype = { "TelescopePrompt" },
   check_ts = true
@@ -63,25 +64,40 @@ cmp.setup({
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 -- Setup lspconfig.
+-- Sort diagnostics by severity
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with (
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+        severity_sort = true
+    }
+)
+
 local capabilities = require('cmp_nvim_lsp')
   .update_capabilities(vim.lsp.protocol
   .make_client_capabilities())
 local pid = vim.fn.getpid()
 
+local on_attach = function(client, bufnr)
+  vim.api.nvim_set_option_value('signcolumn', 'yes', { scope = 'local' })
+end
+
 require('lspconfig')['tsserver'].setup {
+  on_attach = on_attach,
   capabilities = capabilities,
 }
 
 require('lspconfig')['clangd'].setup {
+  on_attach = on_attach,
   capabilities = capabilities,
 }
 
 require('lspconfig')['omnisharp'].setup {
+  on_attach = on_attach,
   cmd = { "omnisharp", "--languageserver", "--hostPID", tostring(pid) },
   capabilities = capabilities,
 }
 
 require('lspconfig')['sumneko_lua'].setup {
+  on_attach = on_attach,
   capabilities = capabilities,
   settings = {
     Lua = {
@@ -93,6 +109,7 @@ require('lspconfig')['sumneko_lua'].setup {
   }
 }
 
-require('lspconfig')['rls'].setup({
+require('lspconfig')['rust_analyzer'].setup({
+  on_attach = on_attach,
   capabilities = capabilities,
 })

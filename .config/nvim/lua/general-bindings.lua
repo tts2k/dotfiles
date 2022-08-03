@@ -58,6 +58,7 @@ xmap('<Leader>q', '<plug>(QuickScopeToggle)', 'Toggle quickscope')
 
 -- Telescope
 nmap('<Leader>p', function() execTelescopeBuiltIn('fd') end, 'Find files')
+nmap('<Leader>P', function() vim.lsp.buf.code_action() end, 'Code actions')
 nmap('<Leader>;', function() execTelescopeBuiltIn('buffers') end, 'List buffers')
 nmap('<Leader>/', function() execTelescopeBuiltIn('current_buffer_fuzzy_find') end, 'Current buffer fuzzy find')
 nmap('<Leader>v', function() execTelescopeExt('file_browser', { path = '~/.config/nvim/lua' }) end, 'Open vim config directory')
@@ -71,3 +72,11 @@ nnoremap('<Leader>ff', function() vim.lsp.buf.formatting() end, 'Format current 
 
 -- File manager
 nnoremap('<Leader>n', function() require('nvim-tree').toggle() end, 'Open side file manager')
+
+-- Trouble diagnostics
+local trouble = require('trouble')
+nnoremap('<Leader>xx', function() trouble.toggle() end, 'Togger trouble')
+nnoremap('<Leader>xw', function() trouble.toggle('workspace_diagnostics') end, 'Togger trouble workspace')
+nnoremap('<Leader>xd', function() trouble.toggle('document_diagnostics') end, 'Togger trouble document')
+nnoremap('<Leader>xq', function() trouble.toggle('quickfix') end, 'Togger trouble quickfix')
+nnoremap('<Leader>xl', function() trouble.toggle('loclist') end, 'Togger trouble loclist')
