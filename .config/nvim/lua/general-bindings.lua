@@ -1,6 +1,6 @@
 -- Fucntions
 -- Change telescope layout based on screen size
-local telescopeOpts = function(opts)
+local telescope_opt = function(opts)
   local width = vim.api.nvim_win_get_width(0)
 
   if width > 150 then
@@ -14,12 +14,12 @@ local telescopeOpts = function(opts)
 end
 
 -- Execute telescope builtins 
-local execTelescopeBuiltIn = function(cmd, opts, theme)
+local exec_telescope_builtin = function(cmd, opts, theme)
   local builtin = require('telescope.builtin')
 
   -- Use theme if specified
   if (theme == nil) then
-    opts = telescopeOpts(opts)
+    opts = telescope_opt(opts)
     builtin[cmd](opts)
   else
     builtin[cmd](require('telescope.themes')[theme]())
@@ -27,10 +27,20 @@ local execTelescopeBuiltIn = function(cmd, opts, theme)
 end
 
 -- Execute telescope extensions 
-local execTelescopeExt = function(cmd, opts)
+local exec_telescope_ext = function(cmd, opts)
   local ext = require('telescope').extensions[cmd]
-  opts = telescopeOpts(opts)
+  opts = telescope_opt(opts)
   ext[cmd](opts)
+end
+
+-- Toggle virtual_lines/virtual_text
+local toggle_virtual_lines = function()
+    local virtual_lines_enabled = vim.diagnostic.config().virtual_lines
+
+    vim.diagnostic.config({
+        virtual_lines = not virtual_lines_enabled,
+        virtual_text = virtual_lines_enabled
+    })
 end
 
 -- Leader map
@@ -57,15 +67,15 @@ nmap('<Leader>q', '<plug>(QuickScopeToggle)', 'Toggle quickscope')
 xmap('<Leader>q', '<plug>(QuickScopeToggle)', 'Toggle quickscope')
 
 -- Telescope
-nmap('<Leader>p', function() execTelescopeBuiltIn('fd') end, 'Find files')
+nmap('<Leader>p', function() exec_telescope_builtin('fd') end, 'Find files')
 nmap('<Leader>P', function() vim.lsp.buf.code_action() end, 'Code actions')
-nmap('<Leader>;', function() execTelescopeBuiltIn('buffers') end, 'List buffers')
-nmap('<Leader>/', function() execTelescopeBuiltIn('current_buffer_fuzzy_find') end, 'Current buffer fuzzy find')
-nmap('<Leader>v', function() execTelescopeExt('file_browser', { path = '~/.config/nvim/lua' }) end, 'Open vim config directory')
-nnoremap('<Leader>fm', function() execTelescopeBuiltIn('marks') end, 'Show list of marks')
-nnoremap('<Leader>fd', function() execTelescopeBuiltIn('lsp_definitions', nil, 'get_cursor') end, 'Show definitions')
-nnoremap('<Leader>fi', function() execTelescopeBuiltIn('lsp_implementations', nil, 'get_cursor') end, 'Show implementations')
-nnoremap('<Leader>fr', function() execTelescopeBuiltIn('lsp_references', nil, 'get_cursor') end, 'Show references')
+nmap('<Leader>;', function() exec_telescope_builtin('buffers') end, 'List buffers')
+nmap('<Leader>/', function() exec_telescope_builtin('current_buffer_fuzzy_find') end, 'Current buffer fuzzy find')
+nmap('<Leader>v', function() exec_telescope_ext('file_browser', { path = '~/.config/nvim/lua' }) end, 'Open vim config directory')
+nnoremap('<Leader>fm', function() exec_telescope_builtin('marks') end, 'Show list of marks')
+nnoremap('<Leader>fd', function() exec_telescope_builtin('lsp_definitions', nil, 'get_cursor') end, 'Show definitions')
+nnoremap('<Leader>fi', function() exec_telescope_builtin('lsp_implementations', nil, 'get_cursor') end, 'Show implementations')
+nnoremap('<Leader>fr', function() exec_telescope_builtin('lsp_references', nil, 'get_cursor') end, 'Show references')
 
 -- Code format
 nnoremap('<Leader>ff', function() vim.lsp.buf.formatting() end, 'Format current buffer')
@@ -80,3 +90,6 @@ nnoremap('<Leader>xw', function() trouble.toggle('workspace_diagnostics') end, '
 nnoremap('<Leader>xd', function() trouble.toggle('document_diagnostics') end, 'Togger trouble document')
 nnoremap('<Leader>xq', function() trouble.toggle('quickfix') end, 'Togger trouble quickfix')
 nnoremap('<Leader>xl', function() trouble.toggle('loclist') end, 'Togger trouble loclist')
+
+-- Toggle virtual_lines/vitual_text
+nnoremap('<Leader>\'', function() toggle_virtual_lines() end, "Toggle virtual lines diagnostic")

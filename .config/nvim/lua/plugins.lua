@@ -4,6 +4,7 @@ return require('packer').startup(function(use)
   use 'rebelot/kanagawa.nvim'
   use 'lukas-reineke/indent-blankline.nvim'
   use 'nvim-lualine/lualine.nvim'
+  use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
 
   -- Langague support
   use 'neovim/nvim-lspconfig'
@@ -21,6 +22,10 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
   use 'saadparwaiz1/cmp_luasnip'
+
+  -- Test
+  use 'nvim-neotest/neotest'
+  use 'rouge8/neotest-rust'
 
   -- Snippets
   use 'L3MON4D3/LuaSnip'
@@ -45,9 +50,11 @@ return require('packer').startup(function(use)
   use 'b0o/mapx.nvim'
   use 'folke/which-key.nvim'
   use 'folke/trouble.nvim'
+  use 'nvim-lua/plenary.nvim'
+  use 'antoinemadec/FixCursorHold.nvim'
+  use 'onsails/lspkind.nvim'
 
   -- Telescope
-  use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
   use {
     'nvim-telescope/telescope-fzf-native.nvim',

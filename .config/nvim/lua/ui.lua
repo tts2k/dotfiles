@@ -150,8 +150,15 @@ vim.fn.sign_define(
   { text = '', texthl = 'DiagnosticHint' }
 )
 
+
+-- Disable virtual text diagnostics
+vim.diagnostic.config({
+    virtual_lines = false
+})
+
 -- One-line plugins
 require('lualine').setup()
 require('nvim-tree').setup { view = { relativenumber = true }}
 require('gitsigns').setup()
 require('which-key').setup()
+require('lsp_lines').setup()

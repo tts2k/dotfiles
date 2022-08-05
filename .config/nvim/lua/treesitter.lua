@@ -12,10 +12,6 @@ require"nvim-treesitter.configs".setup {
       clear_on_cursor_move = true
     },
   },
-  indent = {
-    enable = true,
-    disable = { "cpp", "rust" }
-  },
   autotag = { enable = true },
   context_commentstring = {
     enable = true

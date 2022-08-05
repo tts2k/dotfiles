@@ -12,6 +12,7 @@ require('luasnip.loaders.from_vscode').lazy_load() -- Setup friendly-snippets fo
 -- Setup autocompletion
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local cmp = require("cmp")
+local lspkind = require('lspkind')
 local luasnip = require("luasnip")
 
 local has_words_before = function()
@@ -42,6 +43,18 @@ local cmp_s_tab_mapping = function(fallback)
 end
 
 cmp.setup({
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = "symbol_text",
+      menu = ({
+        buffer = "[Buffer]",
+        nvim_lsp = "[LSP]",
+        luasnip = "[LuaSnip]",
+        nvim_lua = "[Lua]",
+        latex_symbols = "[Latex]",
+      })
+    })
+  },
   snippet = {
     expand = function(args)
         require("luasnip").lsp_expand(args.body)
@@ -58,7 +71,7 @@ cmp.setup({
     { name = 'path'},
   }, {
     { name = 'buffer' }
-  })
+  }),
 })
 
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
@@ -76,7 +89,7 @@ local capabilities = require('cmp_nvim_lsp')
   .make_client_capabilities())
 local pid = vim.fn.getpid()
 
-local on_attach = function(client, bufnr)
+local on_attach = function(_, _)
   vim.api.nvim_set_option_value('signcolumn', 'yes', { scope = 'local' })
 end
 
