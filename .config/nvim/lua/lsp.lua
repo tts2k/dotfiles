@@ -1,16 +1,17 @@
 require('mason').setup()
 require('trouble').setup()
-require("nvim-autopairs").setup {
-  disable_filetype = { "TelescopePrompt" },
-  check_ts = true
-}
+--require("nvim-autopairs").setup {
+--  disable_filetype = { "TelescopePrompt" },
+--  check_ts = true
+--}
 
 -- Misc
-require('Comment').setup() -- Setup comment plugin
+--require('Comment').setup() -- Setup comment plugin
 require('luasnip.loaders.from_vscode').lazy_load() -- Setup friendly-snippets for luasnip
+require('rust-tools').setup() -- Setup rust-tools
 
 -- Setup autocompletion
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+--local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local cmp = require("cmp")
 local lspkind = require('lspkind')
 local luasnip = require("luasnip")
@@ -74,7 +75,7 @@ cmp.setup({
   }),
 })
 
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+--cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 -- Setup lspconfig.
 -- Sort diagnostics by severity
