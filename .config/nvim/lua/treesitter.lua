@@ -6,19 +6,5 @@ require"nvim-treesitter.configs".setup {
     'typescript', 'scss', 'rust'
   },
   highlight = { enable = true },
-  refactor = {
-    highlight_definitions = {
-      enable = true,
-      clear_on_cursor_move = true
-    },
-  },
-  indent = {
-    enable = true,
-    disable = { "cpp", "rust" }
-  },
   autotag = { enable = true },
-  context_commentstring = {
-    enable = true
-  },
-  autopairs = { enable = true },
 }

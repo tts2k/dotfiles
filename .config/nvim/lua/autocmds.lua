@@ -1,6 +1,6 @@
 local api = vim.api
 
---Switch number type when not focus
+-- Switch number type when not focus
 local numberToggleGrp = api.nvim_create_augroup('NumberToggle', { clear = true})
 api.nvim_create_autocmd(
   { 'BufEnter', 'FocusGained', 'InsertLeave' },
@@ -16,3 +16,5 @@ api.nvim_create_autocmd(
   { 'BufLeave', 'FocusLost', 'InsertEnter' },
   { callback = function() vim.opt.relativenumber = false end, group = numberToggleGrp }
 )
+
+

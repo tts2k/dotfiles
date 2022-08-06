@@ -6,8 +6,9 @@ return require('packer').startup(function(use)
   use 'rebelot/kanagawa.nvim'
   use 'lukas-reineke/indent-blankline.nvim'
   use 'nvim-lualine/lualine.nvim'
+  use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
 
-  -- Langague support
+  -- Langague specific plugins
   use 'neovim/nvim-lspconfig'
   -- nim
   use 'alaviss/nim.nvim'
@@ -15,6 +16,8 @@ return require('packer').startup(function(use)
   use 'stevearc/vim-arduino'
   -- pgsql
   use 'lifepillar/pgsql.vim'
+  -- rust
+  use 'simrat39/rust-tools.nvim'
 
   -- Code completion
   use 'hrsh7th/nvim-cmp'
@@ -24,13 +27,16 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-cmdline'
   use 'saadparwaiz1/cmp_luasnip'
 
+  -- Test
+  use 'nvim-neotest/neotest'
+  use 'rouge8/neotest-rust'
+
   -- Snippets
   use 'L3MON4D3/LuaSnip'
   use 'rafamadriz/friendly-snippets'
 
   -- Utilities
   use 'tpope/vim-fugitive'
-  use 'tpope/vim-surround'
   use 'glepnir/dashboard-nvim'
   use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install'  }
   use { 'turbio/bracey.vim', run = 'npm install --prefix server' }
@@ -39,17 +45,18 @@ return require('packer').startup(function(use)
   use 'kdheepak/lazygit.nvim'
   use 'Pocco81/TrueZen.nvim'
   use 'kyazdani42/nvim-tree.lua'
-  use 'numToStr/Comment.nvim'
-  use 'windwp/nvim-autopairs'
   use 'kyazdani42/nvim-web-devicons'
   use { 'williamboman/mason.nvim' }
   use 'lewis6991/gitsigns.nvim'
   use 'b0o/mapx.nvim'
   use 'folke/which-key.nvim'
   use 'folke/trouble.nvim'
+  use 'nvim-lua/plenary.nvim'
+  use 'antoinemadec/FixCursorHold.nvim'
+  use 'onsails/lspkind.nvim'
+  use 'echasnovski/mini.nvim'
 
   -- Telescope
-  use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
   use {
     'nvim-telescope/telescope-fzf-native.nvim',
@@ -62,8 +69,6 @@ return require('packer').startup(function(use)
   -- Treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
   use 'nvim-treesitter/nvim-treesitter-context'
-  use 'nvim-treesitter/nvim-treesitter-refactor'
-  use 'JoosepAlviste/nvim-ts-context-commentstring'
   use 'windwp/nvim-ts-autotag'
 
   -- Debug
