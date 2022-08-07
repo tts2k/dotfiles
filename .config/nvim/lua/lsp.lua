@@ -1,17 +1,11 @@
 require('mason').setup()
 require('trouble').setup()
---require("nvim-autopairs").setup {
---  disable_filetype = { "TelescopePrompt" },
---  check_ts = true
---}
 
 -- Misc
---require('Comment').setup() -- Setup comment plugin
 require('luasnip.loaders.from_vscode').lazy_load() -- Setup friendly-snippets for luasnip
 require('rust-tools').setup() -- Setup rust-tools
 
 -- Setup autocompletion
---local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local cmp = require("cmp")
 local lspkind = require('lspkind')
 local luasnip = require("luasnip")
@@ -21,17 +15,30 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
+--local cmp_tab_mapping = function(fallback)
+--  if cmp.visible() then
+--    cmp.select_next_item()
+--  elseif luasnip.expand_or_jumpable() then
+--    luasnip.expand_or_jump()
+--  elseif has_words_before() then
+--    cmp.complete()
+--  else
+--    fallback()
+--  end
+--end
+
 local cmp_tab_mapping = function(fallback)
-  if cmp.visible() then
-    cmp.select_next_item()
-  elseif luasnip.expand_or_jumpable() then
-    luasnip.expand_or_jump()
-  elseif has_words_before() then
-    cmp.complete()
-  else
-    fallback()
-  end
-end
+    if cmp.visible() then
+        local entry = cmp.get_selected_entry()
+	if not entry then
+	  cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+	else
+	  cmp.confirm()
+	end
+      else
+        fallback()
+      end
+    end
 
 local cmp_s_tab_mapping = function(fallback)
   if cmp.visible() then
@@ -62,7 +69,7 @@ cmp.setup({
     end,
   },
   mapping = {
-    ["<Tab>"] = cmp.mapping(cmp_tab_mapping, { "i", "s" }),
+    ["<Tab>"] = cmp.mapping(cmp_tab_mapping, { "i", "s", "c" }),
     ["<S-Tab>"] = cmp.mapping(cmp_s_tab_mapping, { "i", "s" }),
     ["<CR>"] = cmp.mapping.confirm({ select = true }),
   },
@@ -74,8 +81,6 @@ cmp.setup({
     { name = 'buffer' }
   }),
 })
-
---cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 -- Setup lspconfig.
 -- Sort diagnostics by severity
