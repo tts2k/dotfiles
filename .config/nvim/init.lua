@@ -6,10 +6,10 @@ require('ui')
 require('general-bindings')
 require('options')
 require('mini')
---
+
 require('lsp')
---require('debugger')
---require('test')
+require('debugger')
+require('test')
 require('treesitter')
---
---require('autocmds')
+
+require('autocmds')

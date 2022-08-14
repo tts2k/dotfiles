@@ -3,7 +3,7 @@ require"nvim-treesitter.configs".setup {
     'bash', 'c', 'cpp', 'c_sharp', 'cmake', 'comment',
     'css', 'html', 'java', 'javascript', 'json', 'latex',
     'lua', 'markdown', 'make', 'prisma', 'sql', 'vim',
-    'typescript', 'scss', 'rust'
+    'typescript', 'tsx', 'scss', 'rust'
   },
   highlight = { enable = true },
   autotag = { enable = true },

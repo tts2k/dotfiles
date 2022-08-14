@@ -10,10 +10,10 @@ local cmp = require("cmp")
 local lspkind = require('lspkind')
 local luasnip = require("luasnip")
 
-local has_words_before = function()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
+--local has_words_before = function()
+--  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+--  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+--end
 
 --local cmp_tab_mapping = function(fallback)
 --  if cmp.visible() then
@@ -28,17 +28,17 @@ end
 --end
 
 local cmp_tab_mapping = function(fallback)
-    if cmp.visible() then
-        local entry = cmp.get_selected_entry()
-	if not entry then
-	  cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-	else
-	  cmp.confirm()
-	end
+  if cmp.visible() then
+      local entry = cmp.get_selected_entry()
+      if not entry then
+        cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
       else
-        fallback()
+        cmp.confirm()
       end
+    else
+      fallback()
     end
+  end
 
 local cmp_s_tab_mapping = function(fallback)
   if cmp.visible() then
@@ -69,7 +69,7 @@ cmp.setup({
     end,
   },
   mapping = {
-    ["<Tab>"] = cmp.mapping(cmp_tab_mapping, { "i", "s", "c" }),
+    ["<Tab>"] = cmp.mapping(cmp_tab_mapping, { "i", "s" }),
     ["<S-Tab>"] = cmp.mapping(cmp_s_tab_mapping, { "i", "s" }),
     ["<CR>"] = cmp.mapping.confirm({ select = true }),
   },
