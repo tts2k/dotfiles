@@ -2,9 +2,9 @@ require('plugins')
 
 require('mapx').setup{ global = true, whichkey = true }
 
+require('options')
 require('ui')
 require('general-bindings')
-require('options')
 require('mini')
 
 require('lsp')

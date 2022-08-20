@@ -35,11 +35,8 @@ end
 
 -- Toggle virtual_lines/virtual_text
 local toggle_virtual_lines = function()
-    local virtual_lines_enabled = vim.diagnostic.config().virtual_lines
-
     vim.diagnostic.config({
-        virtual_lines = not virtual_lines_enabled,
-        virtual_text = virtual_lines_enabled
+        virtual_lines = not vim.diagnostic.config().virtual_lines
     })
 end
 

@@ -17,4 +17,7 @@ api.nvim_create_autocmd(
   { callback = function() vim.opt.relativenumber = false end, group = numberToggleGrp }
 )
 
-
+api.nvim_create_autocmd(
+  { 'CursorHold, CursorHoldI'},
+  { callback = function() vim.diagnostic.open_float(nil, { focus = false }) end }
+)

@@ -5,6 +5,7 @@ return require('packer').startup(function(use)
   use 'lukas-reineke/indent-blankline.nvim'
   use 'nvim-lualine/lualine.nvim'
   use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
+  use 'norcalli/nvim-colorizer.lua'
 
   -- Langague specific plugins
   use 'neovim/nvim-lspconfig'

@@ -162,3 +162,4 @@ require('nvim-tree').setup { view = { relativenumber = true }}
 require('gitsigns').setup()
 require('which-key').setup()
 require('lsp_lines').setup()
+require('colorizer').setup()

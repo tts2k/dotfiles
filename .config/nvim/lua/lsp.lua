@@ -83,12 +83,12 @@ cmp.setup({
 })
 
 -- Setup lspconfig.
--- Sort diagnostics by severity
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with (
-    vim.lsp.diagnostic.on_publish_diagnostics, {
-        severity_sort = true
-    }
-)
+vim.diagnostic.config({
+    severity_sort = true,
+    virtual_text = false,
+    signs = true,
+    float = { border = "single" }
+})
 
 local capabilities = require('cmp_nvim_lsp')
   .update_capabilities(vim.lsp.protocol

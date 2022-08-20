@@ -11,6 +11,8 @@ vim.opt.termguicolors = true
 vim.opt.cursorline = true
 vim.opt.showmode = false
 vim.opt.smartindent = true
+vim.opt.termguicolors = true
+vim.opt.updatetime = 250
 
 vim.wo.wrap = false
 
