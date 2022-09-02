@@ -28,6 +28,12 @@ require('indent_blankline').setup {
   }
 }
 
+require('illuminate').configure({
+    filetypes_denylist = {
+        'dashboard', 'NvimTree'
+    }
+})
+
 -- Telescope
 require('telescope').setup({
   defaults = {

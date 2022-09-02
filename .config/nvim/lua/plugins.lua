@@ -6,6 +6,7 @@ return require('packer').startup(function(use)
   use 'nvim-lualine/lualine.nvim'
   use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
   use 'norcalli/nvim-colorizer.lua'
+  use 'RRethy/vim-illuminate'
 
   -- Langague specific plugins
   use 'neovim/nvim-lspconfig'
