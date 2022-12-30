@@ -3,10 +3,19 @@ return require('packer').startup(function(use)
   -- UI
   use 'rebelot/kanagawa.nvim'
   use 'lukas-reineke/indent-blankline.nvim'
+  use 'feline-nvim/feline.nvim'
   use 'nvim-lualine/lualine.nvim'
   use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
   use 'norcalli/nvim-colorizer.lua'
   use 'RRethy/vim-illuminate'
+  use {
+    'folke/noice.nvim',
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    }
+  }
+  use "sitiom/nvim-numbertoggle"
 
   -- Langague specific plugins
   use 'neovim/nvim-lspconfig'
@@ -18,7 +27,9 @@ return require('packer').startup(function(use)
   use 'lifepillar/pgsql.vim'
   -- rust
   use 'simrat39/rust-tools.nvim'
-
+  -- yuck
+  use 'elkowar/yuck.vim'
+ 
   -- Code completion
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
@@ -26,6 +37,8 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
   use 'saadparwaiz1/cmp_luasnip'
+  use 'hrsh7th/cmp-nvim-lsp-signature-help'
+  use 'jose-elias-alvarez/null-ls.nvim'
 
   -- Test
   use 'nvim-neotest/neotest'
@@ -38,7 +51,6 @@ return require('packer').startup(function(use)
   -- Utilities
   use 'tpope/vim-fugitive'
   use 'glepnir/dashboard-nvim'
-  use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install'  }
   use { 'turbio/bracey.vim', run = 'npm install --prefix server' }
   use 'andweeb/presence.nvim'
   use 'unblevable/quick-scope'
@@ -46,7 +58,7 @@ return require('packer').startup(function(use)
   use 'Pocco81/TrueZen.nvim'
   use 'kyazdani42/nvim-tree.lua'
   use 'kyazdani42/nvim-web-devicons'
-  use { 'williamboman/mason.nvim' }
+  use 'williamboman/mason.nvim'
   use 'lewis6991/gitsigns.nvim'
   use 'b0o/mapx.nvim'
   use 'folke/which-key.nvim'
@@ -55,6 +67,10 @@ return require('packer').startup(function(use)
   use 'antoinemadec/FixCursorHold.nvim'
   use 'onsails/lspkind.nvim'
   use 'echasnovski/mini.nvim'
+  use { 'toppair/peek.nvim', run = 'deno task --quiet build:fast' }
+  use 'windwp/nvim-autopairs'
+  use 'karb94/neoscroll.nvim'
+  use 'danymat/neogen'
 
   -- Telescope
   use 'nvim-telescope/telescope.nvim'
@@ -69,11 +85,18 @@ return require('packer').startup(function(use)
   -- Treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
   use 'nvim-treesitter/nvim-treesitter-context'
+  use 'nvim-treesitter/nvim-tree-docs'
   use 'windwp/nvim-ts-autotag'
+  use {
+    "microsoft/vscode-js-debug",
+    opt = true,
+    run = "npm install --legacy-peer-deps && npm run compile" 
+  }
 
   -- Debug
   use 'mfussenegger/nvim-dap'
   use 'rcarriga/nvim-dap-ui'
+  use 'mxsdev/nvim-dap-vscode-js'
 
   -- Masochist
   use 'takac/vim-hardtime'

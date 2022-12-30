@@ -1,3 +1,38 @@
+-- custom highlight groups
+local default_colors = require("kanagawa.colors").setup()
+local overrides = {
+  CmpPmenuSel = { bg = default_colors.sumiInk3 },
+  CmpPmenu = { bg = default_colors.sumiInk1 },
+  CmpPmenuBorder = { fg = default_colors.sumiInk4 },
+
+  CmpDocs = { bg = default_colors.sumiInk1 },
+  CmpDocsBorder = { fg = default_colors.sumiInk4 },
+
+  CmpItemAbbrDeprecated = { fg = default_colors.fujiGray, bg = "NONE", strikethrough=true },
+
+  CmpItemAbbrMatch = { fg = default_colors.crystalBlue },
+  CmpItemAbbrMatchFuzzy = { link = "CmpItemAbbrMatch" },
+
+  CmpItemKindVariable = { fg = default_colors.lightBlue },
+  CmpItemKindText = { link = "CmpItemKindVariable" },
+  CmpItemKindInterface = { link = "CmpItemKindVariable" },
+
+  CmpItemKindFunction = { fg = default_colors.springViolet1 },
+  CmpItemKindMethod = { link = "CmpItemKindFunction" },
+
+  CmpItemKindKeyword = { fg = default_colors.surimiOrange },
+  CmpItemKindUnit = { link = "CmpItemKindKeyword" },
+  CmpItemKindProperty = { link = "CmpItemKindKeyword" },
+  CmpItemKindField = { link = "CmpItemKindKeyword" }
+}
+
+
+require('kanagawa').setup({
+  overrides = overrides
+});
+
+vim.cmd("colorscheme kanagawa")
+
 require('indent_blankline').setup {
   show_current_context = true,
   filetype_exclude = { "dashboard", "help" },
@@ -29,9 +64,9 @@ require('indent_blankline').setup {
 }
 
 require('illuminate').configure({
-    filetypes_denylist = {
-        'dashboard', 'NvimTree'
-    }
+  filetypes_denylist = {
+    'dashboard', 'NvimTree'
+  }
 })
 
 -- Telescope
@@ -138,24 +173,23 @@ db.custom_center = {
 -- Lsp diagnostic icons
 vim.fn.sign_define(
   'DiagnosticSignError',
-  { text = '', texthl = 'DiagnosticError' }
+  { text = ' ', texthl = 'DiagnosticError' }
 )
 
 vim.fn.sign_define(
   'DiagnosticSignWarn',
-  { text = '', texthl = 'DiagnosticWarn' }
+  { text = ' ', texthl = 'DiagnosticWarn' }
 )
 
 vim.fn.sign_define(
   'DiagnosticSignInfo',
-  { text = '', texthl = 'DiagnosticInfo' }
+  { text = ' ', texthl = 'DiagnosticInfo' }
 )
 
 vim.fn.sign_define(
   'DiagnosticSignHint',
-  { text = '', texthl = 'DiagnosticHint' }
+  { text = ' ', texthl = 'DiagnosticHint' }
 )
-
 
 -- Disable virtual text diagnostics
 vim.diagnostic.config({
@@ -163,9 +197,12 @@ vim.diagnostic.config({
 })
 
 -- One-line plugins
-require('lualine').setup()
-require('nvim-tree').setup { view = { relativenumber = true }}
+require('statusline')
 require('gitsigns').setup()
+--require('lualine').setup({})
+require('nvim-tree').setup { view = { relativenumber = true }}
 require('which-key').setup()
 require('lsp_lines').setup()
 require('colorizer').setup()
+require('noice').setup()
+require('neoscroll').setup()

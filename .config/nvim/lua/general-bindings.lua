@@ -1,4 +1,4 @@
--- Fucntions
+-- Functions
 -- Change telescope layout based on screen size
 local telescope_opt = function(opts)
   local width = vim.api.nvim_win_get_width(0)
@@ -75,7 +75,7 @@ nnoremap('<Leader>fi', function() exec_telescope_builtin('lsp_implementations', 
 nnoremap('<Leader>fr', function() exec_telescope_builtin('lsp_references', nil, 'get_cursor') end, 'Show references')
 
 -- Code format
-nnoremap('<Leader>ff', function() vim.lsp.buf.formatting() end, 'Format current buffer')
+nnoremap('<Leader>ff', function() vim.lsp.buf.format() end, 'Format current buffer')
 
 -- File manager
 nnoremap('<Leader>n', function() require('nvim-tree').toggle() end, 'Open side file manager')
@@ -88,5 +88,11 @@ nnoremap('<Leader>xd', function() trouble.toggle('document_diagnostics') end, 'T
 nnoremap('<Leader>xq', function() trouble.toggle('quickfix') end, 'Togger trouble quickfix')
 nnoremap('<Leader>xl', function() trouble.toggle('loclist') end, 'Togger trouble loclist')
 
+-- neogen
+nnoremap('<Leader>g', function() require('neogen').generate({}) end, 'Generate jsdoc comment')
+
 -- Toggle virtual_lines/vitual_text
 nnoremap('<Leader>\'', function() toggle_virtual_lines() end, "Toggle virtual lines diagnostic")
+
+-- Dismiss all notification
+nnoremap('<Leader><CR>', function() require('notify').dismiss() end, 'Dismiss all notification');

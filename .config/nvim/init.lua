@@ -2,8 +2,8 @@ require('plugins')
 
 require('mapx').setup{ global = true, whichkey = true }
 
-require('options')
 require('ui')
+require('options')
 require('general-bindings')
 require('mini')
 

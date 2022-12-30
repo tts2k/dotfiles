@@ -35,30 +35,32 @@ dap.configurations.cpp = {
 -- rust
 dap.configurations.rust = dap.configurations.cpp
 
--- node-debug2-adapter (Node.js)
-dap.adapters.node2 = {
-  type = 'executable',
-  command = 'node',
-  args = os.getenv('HOME') .. '/.local/share/nvim/mason/bin/node-debug2-adapter',
-}
-dap.configurations.javascript = {
-  {
-    name = 'Launch',
-    type = 'node2',
-    request = 'launch',
-    program = '${file}',
-    cwd = vim.fn.getcwd(),
-    sourceMaps = true,
-    protocol = 'inspector',
-    console = 'integratedTerminal',
-  },
-  {
-    name = 'Attach to process',
-    type = 'node2',
-    request = 'attach',
-    processId = require'dap.utils'.pick_process,
-  },
-}
+-- javascript/typescript
+require("dap-vscode-js").setup({
+  node_path = "node",
+  debugger_path = "(runtimedir)/site/pack/packer/opt/vscode-js-debug",
+  debugger_cmd = { "js-debug-adapter" },
+  adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' },
+})
+
+for _, language in ipairs({ "typescript", "javascript" }) do
+  require("dap").configurations[language] = {
+    {
+      type = "pwa-node",
+      request = "launch",
+      name = "Launch file",
+      program = "${file}",
+      cwd = "${workspaceFolder}",
+    },
+    {
+      type = "pwa-node",
+      request = "attach",
+      name = "Attach",
+      processId = require'dap.utils'.pick_process,
+      cwd = "${workspaceFolder}",
+    }
+  }
+end
 
 -- Key bindings
 nnoremap('<Leader>du', function() require('dapui').toggle() end, 'DEBUG: Open debug UI')
