@@ -1,3 +1,4 @@
+
 vim.opt.number = true
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 vim.opt.mouse = 'a'
@@ -12,3 +13,6 @@ vim.opt.showmode = false
 vim.opt.updatetime = 250
 
 vim.wo.wrap = false
+
+-- Leader map
+vim.g.mapleader = " "
