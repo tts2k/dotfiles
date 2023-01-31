@@ -1,25 +1,24 @@
 return {
   'nvim-lua/plenary.nvim',
-  'RRethy/vim-illuminate',
+  {
+    'elkowar/yuck.vim',
+    ft = {
+      "Yuck"
+    }
+  },
+  {
+    'RRethy/vim-illuminate',
+    event = "BufEnter"
+  },
   {
     'williamboman/mason.nvim',
     config = true
   },
 
   {
-    '~whynothugo/lsp_lines.nvim',
-    url = 'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
-    config = true
-  },
-
-  {
     'norcalli/nvim-colorizer.lua',
-    config = true
-  },
-
-  {
-    'winwp/nvim-autopairs',
-    config = true
+    config = true,
+    event = 'BufReadPre'
   },
 
   {
@@ -43,12 +42,12 @@ return {
 
   {
     'sitiom/nvim-numbertoggle',
-    config = true
+    event = 'VeryLazy'
   },
 
   {
     'folke/which-key.nvim',
-    config = true
+    config = true,
   },
 
   {
@@ -61,6 +60,7 @@ return {
 
   {
     'ggandor/leap.nvim',
+    event = 'BufEnter',
     config = function()
       require('leap').add_default_mappings()
     end
@@ -76,11 +76,13 @@ return {
 
   {
     'nvim-tree/nvim-web-devicons',
-    config = { default = true }
+    config = { default = true },
+    event = 'VeryLazy'
   },
 
   {
     'nvim-tree/nvim-tree.lua',
+    cmd = 'NvimTreeToggle',
     config = true,
     dependencies = {
       'nvim-tree/nvim-web-devicons'
@@ -89,23 +91,57 @@ return {
 
   {
     'karb94/neoscroll.nvim',
-    config = true
+    config = function()
+        require('neoscroll').setup({
+        hide_cursor = false
+      })
+    end,
+    event = 'VeryLazy'
   },
 
   {
     'lewis6991/gitsigns.nvim',
-    config = true
+    config = true,
+    event = 'BufReadPre'
   },
 
   {
     'danymat/neogen',
+    event = 'BufEnter',
     config = function()
+      require('neogen').setup({})
       require('util.map')({
         ['<Leader>gj'] = {
           action = function() require('neogen').generate({}) end,
           desc = 'Generate jsdoc comment'
         }
       })
+    end
+  },
+
+  {
+    'barrett-ruth/import-cost.nvim',
+    build = 'sh install.sh yarn',
+    config = true,
+    ft = {
+      'Javascript',
+      'Javascriptreact',
+      'Typescript',
+      'Typescriptreact'
+    }
+  },
+
+  {
+    'glacambre/firenvim',
+    build = function() vim.fn['firenvim#install'](0) end,
+    config = function()
+      vim.g.firenvim_config = {
+        localSettings = {
+          [".*"] = {
+            cmdline = "neovim",
+          }
+        }
+      }
     end
   }
 }

@@ -3,7 +3,12 @@ local M = {
   event = "BufReadPre",
   dependencies = {
     'hrsh7th/cmp-nvim-lsp',
-    'williamboman/mason.nvim'
+    'williamboman/mason.nvim',
+    {
+      '~whynothugo/lsp_lines.nvim',
+      url = 'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
+      config = true
+    },
   }
 }
 
@@ -17,7 +22,13 @@ function M.config()
   end
 
   local servers = {
-    tsserver = {},
+    tsserver = {
+      settings = {
+        completions = {
+          completeFunctionCalls = true
+        }
+      }
+    },
     clangd = {},
     omnisharp = {},
     rust_analyzer = {},

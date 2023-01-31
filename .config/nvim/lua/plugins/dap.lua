@@ -1,7 +1,17 @@
 local M = {
   'mfussenegger/nvim-dap',
+  ft = {
+    'Javascript',
+    'Javascriptreact',
+    'Typescript',
+    'Typescriptreact',
+    'Cpp',
+    'Rust'
+  },
   dependencies = {
-    'mxsdev/nvim-dap-vscode-js',
+    {
+      'mxsdev/nvim-dap-vscode-js',
+    },
     {
       'rcarriga/nvim-dap-ui',
       config = true

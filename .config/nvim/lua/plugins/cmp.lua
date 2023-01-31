@@ -11,6 +11,7 @@ local M = {
     "saadparwaiz1/cmp_luasnip",
     'onsails/lspkind.nvim',
     'L3MON4D3/LuaSnip',
+    { 'windwp/nvim-autopairs', config = true },
   },
 }
 

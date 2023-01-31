@@ -26,12 +26,12 @@ nmap('<Leader>m', '<cmd>TZFocus<CR>', 'Maximize current buffer')
 nnoremap('<Leader>ff', function() vim.lsp.buf.format() end, 'Format current buffer')
 
 -- File manager
-nnoremap('<Leader>n', function() require('nvim-tree').toggle() end, 'Open side file manager')
+nnoremap('<Leader>n', '<Cmd>NvimTreeToggle<Cr>', 'Open side file manager')
 
 -- Trouble diagnostics
-local trouble = require('trouble')
-nnoremap('<Leader>xx', function() trouble.toggle() end, 'Togger trouble')
-nnoremap('<Leader>xw', function() trouble.toggle('workspace_diagnostics') end, 'Togger trouble workspace')
-nnoremap('<Leader>xd', function() trouble.toggle('document_diagnostics') end, 'Togger trouble document')
-nnoremap('<Leader>xq', function() trouble.toggle('quickfix') end, 'Togger trouble quickfix')
-nnoremap('<Leader>xl', function() trouble.toggle('loclist') end, 'Togger trouble loclist')
+--local trouble = require('trouble')
+--nnoremap('<Leader>xx', function() trouble.toggle() end, 'Togger trouble')
+--nnoremap('<Leader>xw', function() trouble.toggle('workspace_diagnostics') end, 'Togger trouble workspace')
+--nnoremap('<Leader>xd', function() trouble.toggle('document_diagnostics') end, 'Togger trouble document')
+--nnoremap('<Leader>xq', function() trouble.toggle('quickfix') end, 'Togger trouble quickfix')
+--nnoremap('<Leader>xl', function() trouble.toggle('loclist') end, 'Togger trouble loclist')

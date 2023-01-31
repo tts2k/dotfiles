@@ -1,5 +1,7 @@
 local M = {
   "jose-elias-alvarez/null-ls.nvim",
+  event = 'BufReadPre',
+  disable = true
 }
 
 function M.setup(options)
