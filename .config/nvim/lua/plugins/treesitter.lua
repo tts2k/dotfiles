@@ -2,6 +2,8 @@ local M = {
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
   event = 'BufReadPost',
+  opts = {
+  },
   dependencies = {
     'nvim-treesitter/nvim-treesitter-context',
     'nvim-treesitter/nvim-tree-docs',
@@ -10,7 +12,7 @@ local M = {
 }
 
 function M.config()
-  require"nvim-treesitter.configs".setup {
+  require('nvim-treesitter.configs').setup {
     ensure_installed = {
       'bash', 'cpp', 'c_sharp', 'cmake', 'comment',
       'css', 'html', 'java', 'javascript', 'json', 'latex',

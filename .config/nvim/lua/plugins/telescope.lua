@@ -11,7 +11,7 @@ local M = {
 }
 
 function M.config()
-  require('telescope').setup({
+  require('telescope').setup {
     defaults = {
     layout_strategy = 'vertical',
     color_devicons = true,
@@ -50,8 +50,7 @@ function M.config()
         require('telescope.themes').get_dropdown()
       }
     }
-  })
-
+  }
   -- Keymapping
   local tls_util = require('util.telescope')
   local map = require('util.map')
