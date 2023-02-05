@@ -8,239 +8,276 @@ local M = {
 
 function M.config()
   local colors = require('kanagawa.colors').setup()
-  local line_ok, feline = pcall(require, "feline")
-  if not line_ok then
-    return
-  end
-
-  local one_monokai = {
-    fg = colors.oldWhite,
-    bg = colors.sumiInk0,
-    green = colors.autumnGreen,
-    yellow = colors.autumnYellow,
-    purple = colors.springViolet1,
-    orange = colors.surimiOrange,
-    peanut = colors.carpYellow,
-    red = colors.autumnRed,
-    aqua = colors.waveAqua1,
-    darkblue = colors.waveBlue1,
-    dark_red = colors.samuraiRed,
-  }
+  local lsp = require('feline.providers.lsp')
+  local vi_mode_utils = require('feline.providers.vi_mode')
 
   local vi_mode_colors = {
-    NORMAL = "green",
-    OP = "green",
-    INSERT = "yellow",
-    VISUAL = "purple",
-    LINES = "orange",
-    BLOCK = "dark_red",
-    REPLACE = "red",
-    COMMAND = "aqua",
+    NORMAL = colors.crystalBlue,
+    INSERT = colors.autumnGreen,
+    VISUAL = colors.oniViolet,
+    OP = colors.autumnGreen,
+    BLOCK = colors.crystalBlue,
+    REPLACE = colors.springViolet1,
+    ['V-REPLACE'] = colors.springViolet1,
+    ENTER = colors.waveAqua1,
+    MORE = colors.waveAqua1,
+    SELECT = colors.surimiOrange,
+    COMMAND = colors.autumnGreen,
+    SHELL = colors.autumnGreen,
+    TERM = colors.autumnGreen,
+    NONE = colors.carpYellow
   }
 
-  local c = {
-    vim_mode = {
-      provider = {
-        name = "vi_mode",
-        opts = {
-          show_mode_name = true,
-          -- padding = "center", -- Uncomment for extra padding.
-        },
+  local icons = {
+    linux = ' ',
+    macos = ' ',
+    windows = ' ',
+
+    errs = ' ',
+    warns = ' ',
+    infos = ' ',
+    hints = ' ',
+
+    lsp = ' ',
+    git = ''
+  }
+
+  local function file_osinfo()
+    local os = vim.bo.fileformat:upper()
+    local icon
+    if os == 'UNIX' then
+      icon = icons.linux
+    elseif os == 'MAC' then
+      icon = icons.macos
+    else
+      icon = icons.windows
+    end
+    return icon .. os
+  end
+
+  local function lsp_diagnostics_info()
+    return {
+      errs = lsp.get_diagnostics_count('Error'),
+      warns = lsp.get_diagnostics_count('Warning'),
+      infos = lsp.get_diagnostics_count('Information'),
+      hints = lsp.get_diagnostics_count('Hint')
+    }
+  end
+
+  local function diag_enable(f, s)
+    return function()
+      local diag = f()[s]
+      return diag and diag ~= 0
+    end
+  end
+
+  local function diag_of(f, s)
+    local icon = icons[s]
+    return function()
+      local diag = f()[s]
+      return icon .. diag
+    end
+  end
+
+  local function vimode_hl()
+    return {
+      name = vi_mode_utils.get_mode_highlight_name(),
+      fg = vi_mode_utils.get_mode_color()
+    }
+  end
+
+  -- LuaFormatter off
+
+  local comps = {
+    vi_mode = {
+      left = {
+        provider = '▊',
+        hl = vimode_hl,
+        right_sep = ' '
       },
-      hl = function()
-        return {
-          fg = require("feline.providers.vi_mode").get_mode_color(),
-          bg = "darkblue",
-          style = "bold",
-          name = "NeovimModeHLColor",
+      right = {
+        provider = '▊',
+        hl = vimode_hl,
+        left_sep = ' '
+      }
+    },
+    file = {
+      info = {
+        provider = 'file_info',
+        hl = {
+          fg = colors.blue,
+          style = 'bold'
         }
-      end,
-      left_sep = "block",
-      right_sep = "block",
-    },
-    gitBranch = {
-      provider = "git_branch",
-      hl = {
-        fg = "peanut",
-        bg = "darkblue",
-        style = "bold",
       },
-      left_sep = "block",
-      right_sep = "block",
-    },
-    gitDiffAdded = {
-      provider = "git_diff_added",
-      hl = {
-        fg = "green",
-        bg = "darkblue",
+      encoding = {
+        provider = 'file_encoding',
+        left_sep = ' ',
+        hl = {
+          fg = colors.violet,
+          style = 'bold'
+        }
       },
-      left_sep = "block",
-      right_sep = "block",
-    },
-    gitDiffRemoved = {
-      provider = "git_diff_removed",
-      hl = {
-        fg = "red",
-        bg = "darkblue",
+      type = {
+        provider = 'file_type'
       },
-      left_sep = "block",
-      right_sep = "block",
-    },
-    gitDiffChanged = {
-      provider = "git_diff_changed",
-      hl = {
-        fg = "fg",
-        bg = "darkblue",
-      },
-      left_sep = "block",
-      right_sep = "right_filled",
-    },
-    separator = {
-      provider = "",
-    },
-    fileinfo = {
-      provider = {
-        name = "file_info",
-        opts = {
-          type = "relative-short",
-        },
-      },
-      hl = {
-        style = "bold",
-      },
-      left_sep = " ",
-      right_sep = " ",
-    },
-    diagnostic_errors = {
-      provider = "diagnostic_errors",
-      hl = {
-        fg = "red",
-      },
-    },
-    diagnostic_warnings = {
-      provider = "diagnostic_warnings",
-      hl = {
-        fg = "yellow",
-      },
-    },
-    diagnostic_hints = {
-      provider = "diagnostic_hints",
-      hl = {
-        fg = "aqua",
-      },
-    },
-    diagnostic_info = {
-      provider = "diagnostic_info",
-    },
-    lsp_client_names = {
-      provider = "lsp_client_names",
-      hl = {
-        fg = "purple",
-        bg = "darkblue",
-        style = "bold",
-      },
-      left_sep = "left_filled",
-      right_sep = "block",
-    },
-    file_type = {
-      provider = {
-        name = "file_type",
-        opts = {
-          filetype_icon = true,
-          case = "titlecase",
-        },
-      },
-      hl = {
-        fg = "red",
-        bg = "darkblue",
-        style = "bold",
-      },
-      left_sep = "block",
-      right_sep = "block",
-    },
-    file_encoding = {
-      provider = "file_encoding",
-      hl = {
-        fg = "orange",
-        bg = "darkblue",
-        style = "italic",
-      },
-      left_sep = "block",
-      right_sep = "block",
-    },
-    position = {
-      provider = "position",
-      hl = {
-        fg = "green",
-        bg = "darkblue",
-        style = "bold",
-      },
-      left_sep = "block",
-      right_sep = "block",
+      os = {
+        provider = file_osinfo,
+        left_sep = ' ',
+        hl = {
+          fg = colors.violet,
+          style = 'bold'
+        }
+      }
     },
     line_percentage = {
-      provider = "line_percentage",
+      provider = 'line_percentage',
+      left_sep = ' ',
       hl = {
-        fg = "aqua",
-        bg = "darkblue",
-        style = "bold",
-      },
-      left_sep = "block",
-      right_sep = "block",
+        style = 'bold'
+      }
     },
     scroll_bar = {
-      provider = "scroll_bar",
+      provider = 'scroll_bar',
+      left_sep = ' ',
       hl = {
-        fg = "yellow",
-        style = "bold",
+        fg = colors.blue,
+        style = 'bold'
+      }
+    },
+    diagnos = {
+      err = {
+        provider = diag_of(lsp_diagnostics_info, 'errs'),
+        left_sep = ' ',
+        enabled = diag_enable(lsp_diagnostics_info, 'errs'),
+        hl = {
+          fg = colors.red
+        }
+      },
+      warn = {
+        provider = diag_of(lsp_diagnostics_info, 'warns'),
+        left_sep = ' ',
+        enabled = diag_enable(lsp_diagnostics_info, 'warns'),
+        hl = {
+          fg = colors.yellow
+        }
+      },
+      info = {
+        provider = diag_of(lsp_diagnostics_info, 'infos'),
+        left_sep = ' ',
+        enabled = diag_enable(lsp_diagnostics_info, 'infos'),
+        hl = {
+          fg = colors.blue
+        }
+      },
+      hint = {
+        provider = diag_of(lsp_diagnostics_info, 'hints'),
+        left_sep = ' ',
+        enabled = diag_enable(lsp_diagnostics_info, 'hints'),
+        hl = {
+          fg = colors.cyan
+        }
       },
     },
+    lsp = {
+      name = {
+        provider = 'lsp_client_names',
+        left_sep = ' ',
+        icon = icons.lsp,
+        hl = {
+          fg = colors.yellow
+        }
+      }
+    },
+    git = {
+      branch = {
+        provider = 'git_branch',
+        icon = icons.git,
+        left_sep = ' ',
+        hl = {
+          fg = colors.violet,
+          style = 'bold'
+        },
+      },
+      add = {
+        provider = 'git_diff_added',
+        hl = {
+          fg = colors.green
+        }
+      },
+      change = {
+        provider = 'git_diff_changed',
+        hl = {
+          fg = colors.orange
+        }
+      },
+      remove = {
+        provider = 'git_diff_removed',
+        hl = {
+          fg = colors.red
+        }
+      }
+    }
   }
 
-  local left = {
-    c.vim_mode,
-    c.gitBranch,
-    c.gitDiffAdded,
-    c.gitDiffRemoved,
-    c.gitDiffChanged,
-    c.separator,
-  }
-
-  local middle = {
-    c.fileinfo,
-    c.diagnostic_errors,
-    c.diagnostic_warnings,
-    c.diagnostic_info,
-    c.diagnostic_hints,
-  }
-
-  local right = {
-    c.lsp_client_names,
-    c.file_type,
-    c.file_encoding,
-    c.position,
-    c.line_percentage,
-    c.scroll_bar,
+  local properties = {
+    force_inactive = {
+      filetypes = {
+        'NvimTree',
+        'dbui',
+        'packer',
+        'startify',
+        'fugitive',
+        'fugitiveblame'
+      },
+      buftypes = { 'terminal' },
+      bufnames = {}
+    }
   }
 
   local components = {
-    active = {
-      left,
-      middle,
-      right,
+    left = {
+      active = {
+        comps.vi_mode.left,
+        comps.file.info,
+        comps.lsp.name,
+        comps.diagnos.err,
+        comps.diagnos.warn,
+        comps.diagnos.hint,
+        comps.diagnos.info
+      },
+      inactive = {
+        comps.vi_mode.left,
+        comps.file.info
+      }
     },
-    inactive = {
-      left,
-      middle,
-      right,
+    mid = {
+      active = {},
+      inactive = {}
     },
+    right = {
+      active = {
+        comps.git.add,
+        comps.git.change,
+        comps.git.remove,
+        comps.file.os,
+        comps.git.branch,
+        comps.line_percentage,
+        comps.scroll_bar,
+        comps.vi_mode.right
+      },
+      inactive = {}
+    }
   }
 
-  feline.setup({
+  -- LuaFormatter on
+
+  require 'feline'.setup {
+    default_bg = colors.sumiInk1,
+    default_fg = colors.fujiWhite,
     components = components,
-    theme = one_monokai,
-    vi_mode_colors = vi_mode_colors,
-  })
+    properties = properties,
+    vi_mode_colors = vi_mode_colors
+  }
 end
 
 return M

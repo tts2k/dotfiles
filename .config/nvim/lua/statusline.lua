@@ -4,7 +4,7 @@ if not line_ok then
   return
 end
 
-local one_monokai = {
+local kanagawa = {
   fg = colors.oldWhite,
   bg = colors.sumiInk0,
   green = colors.autumnGreen,
@@ -35,13 +35,13 @@ local c = {
       name = "vi_mode",
       opts = {
         show_mode_name = true,
-        -- padding = "center", -- Uncomment for extra padding.
+        --padding = "center",
       },
     },
     hl = function()
       return {
         fg = require("feline.providers.vi_mode").get_mode_color(),
-        bg = "darkblue",
+        bg = "purple",
         style = "bold",
         name = "NeovimModeHLColor",
       }
@@ -229,6 +229,6 @@ local components = {
 
 feline.setup({
   components = components,
-  theme = one_monokai,
+  theme = kanagawa,
   vi_mode_colors = vi_mode_colors,
 })

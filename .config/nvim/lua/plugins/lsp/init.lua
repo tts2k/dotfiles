@@ -34,6 +34,7 @@ function M.config()
     rust_analyzer = {},
     pyright = {},
     prismals = {},
+    bashls = {},
     sumneko_lua = {
       Lua = {
         runtime = { version = 'LuaJIT' },
