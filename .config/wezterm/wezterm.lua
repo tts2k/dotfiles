@@ -89,7 +89,7 @@ wezterm.on(
 )
 
 -- Keys
-local leader = { key = 'a', mods = 'ALT', timeout_miliseconds = 1000 }
+local leader = { key = ' ', mods = 'CTRL', timeout_miliseconds = 1000 }
 local keys = {
   {
     key = 'x',
@@ -245,8 +245,9 @@ return {
   show_tab_index_in_tab_bar = false,
   switch_to_last_active_tab_when_closing_tab = true,
   tab_max_width = 30,
-  animation_fps = 60,
-  cursor_blink_rate = 800,
+  animation_fps = 1,
+  cursor_blink_ease_in = "Constant",
+  cursor_blink_ease_out = "Constant",
 
   use_dead_keys = false,
   disable_default_key_bindings = true,
