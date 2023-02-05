@@ -16,8 +16,12 @@ function M.setup()
       action = function() tls_util.builtin('lsp_definitions', nil, 'get_cursor') end,
       desc = 'Show definitions'
     },
+    ['<Leader>ft'] = {
+      action = function() tls_util.builtin('lsp_type_definitions', nil, 'get_cursor') end,
+      desc = 'Show type definitions'
+    },
     ['<Leader>fi'] = {
-      action = function() tls_util.builtin('lsp_definitions', nil, 'get_cursor') end,
+      action = function() tls_util.builtin('lsp_implementations', nil, 'get_cursor') end,
       desc = 'Show implementations'
     },
     ['<Leader>fr'] = {

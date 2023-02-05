@@ -13,18 +13,18 @@ local M = {
 function M.config()
   require('telescope').setup {
     defaults = {
-    layout_strategy = 'vertical',
-    color_devicons = true,
-    path_display = { "truncate" },
-    mappings = {
-      n = {
-        ['<C-d>'] = require('telescope.actions').delete_buffer,
-      },
-      i = {
-        ['<C-h>'] = 'which_key',
-        ['<C-d>'] = require('telescope.actions').delete_buffer,
+      layout_strategy = 'vertical',
+      color_devicons = true,
+      path_display = { "truncate" },
+      mappings = {
+        n = {
+          ['<C-d>'] = require('telescope.actions').delete_buffer,
+        },
+        i = {
+          ['<C-h>'] = 'which_key',
+          ['<C-d>'] = require('telescope.actions').delete_buffer,
+        }
       }
-    }
     },
     pickers = {
       buffers = {
@@ -66,6 +66,10 @@ function M.config()
     ['<Leader>/'] = {
       action = function() tls_util.builtin('current_buffer_fuzzy_find') end,
       desc = 'Current buffer fuzzy find'
+    },
+    ['<Leader>?'] = {
+      action = function() tls_util.builtin('live_grep') end,
+      desc = 'Current directory fuzzy find'
     },
     ['<Leader>v'] = {
       action = function() tls_util.ext('file_browser', { path = '~/.config/nvim/lua' }) end,
