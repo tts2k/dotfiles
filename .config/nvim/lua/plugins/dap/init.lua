@@ -1,13 +1,5 @@
 local M = {
   'mfussenegger/nvim-dap',
-  ft = {
-    'Javascript',
-    'Javascriptreact',
-    'Typescript',
-    'Typescriptreact',
-    'Cpp',
-    'Rust'
-  },
   dependencies = {
     {
       'mxsdev/nvim-dap-vscode-js',
@@ -21,6 +13,7 @@ local M = {
 
 function M.config()
   local dap = require('dap')
+  require('plugins.dap.keymap').setup()
 
   -- cpptools/gdb (C/C++)
   dap.adapters.cppdbg = {
