@@ -23,7 +23,7 @@ nmap('<Leader>l', '<C-w>l', 'Move to window on the right')
 nmap('<Leader>m', '<cmd>TZFocus<CR>', 'Maximize current buffer')
 
 -- Code format
-nnoremap('<Leader>ff', function() vim.lsp.buf.format() end, 'Format current buffer')
+noremap('<Leader>ff', function() vim.lsp.buf.format() end, 'Format current buffer')
 
 -- File manager
 nnoremap('<Leader>n', '<Cmd>NvimTreeToggle<Cr>', 'Open side file manager')
@@ -35,11 +35,17 @@ vnoremap('<A-j>', ':m \'>+1<CR>gv=gv', 'Move a block down')
 vnoremap('<A-k>', ':m \'<-2<CR>gv=gv', 'Move a block up')
 
 -- Indent without exiting visual mode 
-vmap('>', '>gv', 'Indent a block')
-vmap('<', '<gv', 'Indent a block')
+vnoremap('>', '>gv', 'Indent a block')
+vnoremap('<', '<gv', 'Indent a block')
 
 -- Create new line with CR without exiting normal mode
-nmap('<CR>', 'o<ESC>')
+nnoremap('<CR>', 'o<ESC>', 'New line without exiting normal mode')
+
+-- Print from yank register on insert mode Ctrl+P
+imap('<C-v>', '<C-r>0', 'Paste from yank buffer')
+
+-- U for redo
+nnoremap('U', '<C-r>', 'Redo')
 
 -- Trouble diagnostics
 --local trouble = require('trouble')
