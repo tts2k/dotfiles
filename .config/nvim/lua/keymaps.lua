@@ -46,7 +46,6 @@ imap('<C-v>', '<C-r>0', 'Paste from yank buffer')
 
 -- U for redo
 nnoremap('U', '<C-r>', 'Redo')
-
 -- Trouble diagnostics
 --local trouble = require('trouble')
 --nnoremap('<Leader>xx', function() trouble.toggle() end, 'Togger trouble')
