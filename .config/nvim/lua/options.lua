@@ -1,4 +1,3 @@
-
 vim.opt.number = true
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 vim.opt.mouse = 'a'
@@ -11,6 +10,7 @@ vim.opt.termguicolors = true
 vim.opt.cursorline = true
 vim.opt.showmode = false
 vim.opt.updatetime = 250
+vim.opt.laststatus = 3
 
 vim.wo.wrap = false
 
