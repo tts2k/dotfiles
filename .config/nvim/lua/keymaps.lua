@@ -28,6 +28,19 @@ nnoremap('<Leader>ff', function() vim.lsp.buf.format() end, 'Format current buff
 -- File manager
 nnoremap('<Leader>n', '<Cmd>NvimTreeToggle<Cr>', 'Open side file manager')
 
+-- Move a line or block
+nnoremap('<A-j>', ':m .+1<CR>==', 'Move a line down')
+nnoremap('<A-k>', ':m -2<CR>==', 'Move a line up')
+vnoremap('<A-j>', ':m \'>+1<CR>gv=gv', 'Move a block down')
+vnoremap('<A-k>', ':m \'<-2<CR>gv=gv', 'Move a block up')
+
+-- Indent without exiting visual mode 
+vmap('>', '>gv', 'Indent a block')
+vmap('<', '<gv', 'Indent a block')
+
+-- Create new line with CR without exiting normal mode
+nmap('<CR>', 'o<ESC>')
+
 -- Trouble diagnostics
 --local trouble = require('trouble')
 --nnoremap('<Leader>xx', function() trouble.toggle() end, 'Togger trouble')
