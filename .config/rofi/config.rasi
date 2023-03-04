@@ -1,5 +1,5 @@
 configuration {
-    modi: "window,drun,ssh";
     terminal: "kitty";
-    theme: "/home/noire/.config/rofi/kanagawa.rasi";
 }
+
+@theme "~/.config/rofi/kanagawa.rasi"
