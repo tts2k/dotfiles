@@ -5,7 +5,7 @@ source /usr/share/nvm/init-nvm.sh
 
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
-export PS1="\[$(tput setaf 5)\]\w$(tput setaf 3)\$(__git_ps1 \" [%s]\")\]$(tput setaf 2) \$ \[$(tput sgr0)\]"
+export PS1="\[$(tput setaf 5)\]\w\]\[$(tput setaf 3)\]\[\$(__git_ps1 \" [%s]\")\]\[$(tput setaf 2)\] \$ \[$(tput sgr0)\]"
 
 export EDITOR=nvim
 export BROWSER=firefox
