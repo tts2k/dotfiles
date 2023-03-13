@@ -35,7 +35,9 @@ function M.config()
     pyright = {},
     prismals = {},
     bashls = {},
-    sumneko_lua = {
+    gopls = {},
+    golang_lint_ls = {},
+    lua_ls = {
       Lua = {
         runtime = { version = 'LuaJIT' },
         diagnostics = { globals = {'vim'} },

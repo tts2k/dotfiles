@@ -3,7 +3,7 @@ return {
   {
     'elkowar/yuck.vim',
     ft = {
-      "Yuck"
+      "yuck"
     }
   },
   {
