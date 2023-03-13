@@ -92,7 +92,6 @@ tooltip label {
 .module_essid {
     font-size: 18;
     color: #a1bdce;
-  margin: 0px 10px 0px 0px;
 }
 .module-wif {
     font-size: 16px;
@@ -108,7 +107,7 @@ tooltip label {
     color: #afbea2;
 }
 .iconbat, .iconmem {
-    font-size: 16px;
+    font-size: 10px;
     margin: 10px;
 }
 .bright_icon {
@@ -129,15 +128,13 @@ tooltip label {
   }
 
 .mem_module {
-    background-color: #0f0f17;
-	border-radius: 16px;
-  margin: 0px 10px 0px 3px;
-  }
+    border-radius: 16px;
+    margin: 0px 10px 0px 3px;
+}
 .bat_module {
-    background-color: #0f0f17;
-	border-radius: 16px;
-  margin: 0px 10px 0px 10px;
-  }
+      border-radius: 16px;
+    margin: 0px 10px 0px 10px;
+}
 
 
 scale trough {
