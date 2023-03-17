@@ -6,7 +6,7 @@ local M = {
 }
 
 function M.config()
-  local default_colors = require("kanagawa.colors").setup()
+  local default_colors = require("kanagawa.colors").setup({theme = 'wave'})
   local overrides = {
     CmpPmenuSel = { bg = default_colors.sumiInk3 },
     CmpPmenu = { bg = default_colors.sumiInk1 },
@@ -34,7 +34,12 @@ function M.config()
   }
 
   require('kanagawa').setup({
-    overrides = overrides
+    colors = {
+      theme = { all = { ui = { bg_gutter = 'none' } }}
+    },
+    overrides = function(_)
+      return overrides
+    end
   });
 
   vim.cmd([[colorscheme kanagawa]])
