@@ -36,7 +36,7 @@ function M.config()
     prismals = {},
     bashls = {},
     gopls = {},
-    golang_lint_ls = {},
+    golangci_lint_ls = {},
     lua_ls = {
       Lua = {
         runtime = { version = 'LuaJIT' },

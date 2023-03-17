@@ -143,5 +143,10 @@ return {
         }
       }
     end
+  },
+
+  {
+    "toppair/peek.nvim",
+    build = "deno task --quiet build:fast"
   }
 }
