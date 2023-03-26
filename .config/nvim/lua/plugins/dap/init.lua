@@ -8,12 +8,12 @@ local M = {
       'rcarriga/nvim-dap-ui',
       config = true
     },
-  }
+  },
+  keys = require('plugins.dap.keymap')
 }
 
 function M.config()
   local dap = require('dap')
-  require('plugins.dap.keymap').setup()
 
   -- cpptools/gdb (C/C++)
   dap.adapters.cppdbg = {
