@@ -27,14 +27,13 @@ return {
       "MunifTanjim/nui.nvim",
       {
         "rcarriga/nvim-notify",
-        config = function()
-          require('util.map')({
-            ['<Leader><BS>'] = {
-              action = function() require('notify').dissmiss() end,
-              desc = 'Dismiss all notifications'
-            }
-          })
-        end
+        keys = {
+          {
+            '<Leader><BS>',
+            function() require('notify').dismiss() end,
+            desc = 'Dismiss all notifications'
+          }
+        }
       },
     },
     config = true
@@ -100,23 +99,12 @@ return {
   },
 
   {
-    'lewis6991/gitsigns.nvim',
-    config = true,
-    event = 'BufReadPre'
-  },
-
-  {
     'danymat/neogen',
     event = 'BufEnter',
-    config = function()
-      require('neogen').setup({})
-      require('util.map')({
-        ['<Leader>gj'] = {
-          action = function() require('neogen').generate({}) end,
-          desc = 'Generate jsdoc comment'
-        }
-      })
-    end
+    config = true,
+    keys = {
+      {'<Leader>gj', function() require('neogen').generate({}) end, desc = 'Generate jsdoc comment' }
+    }
   },
 
   {

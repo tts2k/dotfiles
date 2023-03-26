@@ -51,33 +51,16 @@ function M.config()
       }
     }
   }
-  -- Keymapping
-  local tls_util = require('util.telescope')
-  local map = require('util.map')
-  local keys = {
-    ['<Leader>p'] = {
-      action = function() tls_util.builtin('fd') end,
-      desc = 'Find files'
-    },
-    ['<Leader>;'] = {
-      action = function() tls_util.builtin('buffers') end,
-      desc = 'List buffers'
-    },
-    ['<Leader>/'] = {
-      action = function() tls_util.builtin('current_buffer_fuzzy_find') end,
-      desc = 'Current buffer fuzzy find'
-    },
-    ['<Leader>?'] = {
-      action = function() tls_util.builtin('live_grep') end,
-      desc = 'Current directory fuzzy find'
-    },
-    ['<Leader>v'] = {
-      action = function() tls_util.ext('file_browser', { path = '~/.config/nvim/lua' }) end,
-      desc = 'Open vim config directory'
-    },
-  }
-
-  map(keys)
 end
+
+local tls_util = require('util.telescope')
+-- Key mapping
+M.keys = {
+  {'<Leader>p', function() tls_util.builtin('fd') end, desc = 'Find files' },
+  {'<Leader>;', function() tls_util.builtin('buffers') end, desc = 'List buffers' },
+  {'<Leader>/', function() tls_util.builtin('current_buffer_fuzzy_find') end, desc = 'Current buffer fuzzy find' },
+  {'<Leader>?', function() tls_util.builtin('live_grep') end, desc = 'Current directory fuzzy find' },
+  {'<Leader>v', function() tls_util.ext('file_browser', { path = '~/.config/nvim/lua' }) end, desc = 'Open vim config directory' },
+}
 
 return M

@@ -61,7 +61,7 @@ function M.config()
     end
 
     require('plugins.null-ls').setup(options)
-    require('plugins.lsp.keymap').setup()
+    --require('plugins.lsp.keymap').setup()
 end
 
 return M
