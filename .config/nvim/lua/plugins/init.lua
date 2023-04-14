@@ -12,7 +12,8 @@ return {
   },
   {
     'williamboman/mason.nvim',
-    config = true
+    config = true,
+    cmd = "Mason"
   },
 
   {
@@ -112,10 +113,10 @@ return {
     build = 'sh install.sh yarn',
     config = true,
     ft = {
-      'Javascript',
-      'Javascriptreact',
-      'Typescript',
-      'Typescriptreact'
+      'javascript',
+      'javascriptreact',
+      'typescript',
+      'typescriptreact'
     }
   },
 
@@ -136,5 +137,11 @@ return {
   {
     "toppair/peek.nvim",
     build = "deno task --quiet build:fast"
+  },
+
+  {
+    "JellyApple102/flote.nvim",
+    opts = {},
+    cmd = "Flote"
   }
 }
