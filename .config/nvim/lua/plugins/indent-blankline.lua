@@ -10,7 +10,7 @@ function M.config()
   require('indent_blankline').setup {
     show_current_context = true,
     filetype_exclude = { "dashboard", "help" },
-    char = "¦",
+    char = "│",
     context_char = "│",
     context_patterns = {
      "class",
