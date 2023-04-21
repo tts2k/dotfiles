@@ -11,6 +11,7 @@ vim.opt.cursorline = true
 vim.opt.showmode = false
 vim.opt.updatetime = 250
 vim.opt.laststatus = 3
+vim.opt.foldmethod = "expr"
 
 vim.wo.wrap = false
 

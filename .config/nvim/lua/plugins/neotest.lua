@@ -1,5 +1,6 @@
 local M = {
   'nvim-neotest/neotest',
+  enable = false,
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-treesitter/nvim-treesitter',

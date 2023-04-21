@@ -9,7 +9,8 @@ local M = {
       url = 'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
       config = true
     },
-  }
+  },
+  keys = require('plugins.lsp.keymap')
 }
 
 function M.config()
@@ -35,33 +36,34 @@ function M.config()
     pyright = {},
     prismals = {},
     bashls = {},
-    gopls = {},
+    gopls = require('go.lsp').config(),
     golangci_lint_ls = {},
+    svelte = {},
+    html = {},
     lua_ls = {
       Lua = {
         runtime = { version = 'LuaJIT' },
-        diagnostics = { globals = {'vim'} },
+        diagnostics = { globals = { 'vim' } },
         workspace = { library = vim.api.nvim_get_runtime_file("", true) },
         telemetry = { enable = false },
       },
     }
   }
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-    local options = {
-      on_attach = on_attach,
-      capabilities = capabilities,
-    }
+  local options = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
 
-    for server, opts in pairs(servers) do
-      opts = vim.tbl_deep_extend('force', {}, options, opts or {})
-      require('lspconfig')[server].setup(opts)
-    end
+  for server, opts in pairs(servers) do
+    opts = vim.tbl_deep_extend('force', {}, options, opts or {})
+    require('lspconfig')[server].setup(opts)
+  end
 
-    require('plugins.null-ls').setup(options)
-    --require('plugins.lsp.keymap').setup()
+  require('plugins.null-ls').setup(options)
 end
 
 return M

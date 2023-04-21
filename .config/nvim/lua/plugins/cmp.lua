@@ -1,12 +1,11 @@
-local cmdline = false
 local M = {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
-    { "hrsh7th/cmp-cmdline", enabled = cmdline },
-    { "dmitmel/cmp-cmdline-history", enabled = cmdline },
+    { "hrsh7th/cmp-cmdline" },
+    { "dmitmel/cmp-cmdline-history" },
     "hrsh7th/cmp-path",
     "saadparwaiz1/cmp_luasnip",
     'onsails/lspkind.nvim',
@@ -16,7 +15,6 @@ local M = {
 }
 
 function M.config()
-
   local cmp = require('cmp')
   local lspkind = require('lspkind')
   local luasnip = require('luasnip')
@@ -50,11 +48,11 @@ function M.config()
     window = {
       completion = {
         border = {'╭', '─', '╮', '│', '╯', '─', '╰', '│'},
-        winhighlight = 'Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None',
+        winhighlight = 'Normal:Normal,FloatBorder:FloatBorder,CursorLine:CursorLine,Search:None',
       },
       documentation = {
         border = {'╭', '─', '╮', '│', '╯', '─', '╰', '│'},
-        winhighlight = 'Normal:CmpDocs,FloatBorder:CmpDocsBorder',
+        winhighlight = 'Normal:Normal,FloatBorder:FloatBorder',
       },
     },
     formatting = {
@@ -86,7 +84,7 @@ function M.config()
       { name = 'nvim_lsp' },
       { name = 'nvim_lsp_signature_help' },
       { name = 'luasnip' },
-      { name = 'path'},
+      { name = 'path' },
     }, {
       { name = 'buffer' }
     }),
