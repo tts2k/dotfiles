@@ -1,9 +1,9 @@
 -- Functions
 -- Toggle virtual_lines/virtual_text
 local toggle_virtual_lines = function()
-    vim.diagnostic.config({
-        virtual_lines = not vim.diagnostic.config().virtual_lines
-    })
+  vim.diagnostic.config({
+    virtual_lines = not vim.diagnostic.config().virtual_lines
+  })
 end
 
 -- Select all
@@ -26,7 +26,7 @@ nmap('<Leader>m', '<cmd>TZFocus<CR>', 'Maximize current buffer')
 noremap('<Leader>ff', function() vim.lsp.buf.format() end, 'Format current buffer')
 
 -- File manager
-nnoremap('<Leader>n', '<Cmd>NvimTreeToggle<Cr>', 'Open side file manager')
+--nnoremap('<Leader>n', '<Cmd>NvimTreeToggle<Cr>', 'Open side file manager')
 
 -- Move a line or block
 nnoremap('<A-j>', ':m .+1<CR>==', 'Move a line down')
@@ -34,7 +34,7 @@ nnoremap('<A-k>', ':m -2<CR>==', 'Move a line up')
 vnoremap('<A-j>', ':m \'>+1<CR>gv=gv', 'Move a block down')
 vnoremap('<A-k>', ':m \'<-2<CR>gv=gv', 'Move a block up')
 
--- Indent without exiting visual mode 
+-- Indent without exiting visual mode
 vnoremap('>', '>gv', 'Indent a block')
 vnoremap('<', '<gv', 'Indent a block')
 

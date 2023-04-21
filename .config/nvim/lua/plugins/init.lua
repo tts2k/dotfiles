@@ -81,15 +81,6 @@ return {
   },
 
   {
-    'nvim-tree/nvim-tree.lua',
-    cmd = 'NvimTreeToggle',
-    config = true,
-    dependencies = {
-      'nvim-tree/nvim-web-devicons'
-    }
-  },
-
-  {
     'karb94/neoscroll.nvim',
     config = function()
         require('neoscroll').setup({
@@ -143,5 +134,17 @@ return {
     "JellyApple102/flote.nvim",
     opts = {},
     cmd = "Flote"
+  },
+
+  {
+    "numToStr/Comment.nvim",
+    opts = {},
+    event = "BufEnter"
+  },
+
+  {
+    "kylechui/nvim-surround",
+    event = "BufEnter",
+    opts = {}
   }
 }

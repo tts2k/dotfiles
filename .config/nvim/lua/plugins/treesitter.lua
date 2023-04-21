@@ -14,7 +14,7 @@ local M = {
 function M.config()
   require('nvim-treesitter.configs').setup {
     ensure_installed = {
-      'bash', 'cpp', 'c_sharp', 'cmake', 'comment',
+      'bash', 'cpp', 'c_sharp', 'cmake', 'comment', 'go',
       'css', 'html', 'java', 'javascript', 'json', 'latex',
       'lua', 'markdown', 'make', 'prisma', 'sql', 'vim',
       'typescript', 'tsx', 'scss', 'rust', 'python', 'svelte'
@@ -24,6 +24,8 @@ function M.config()
     tree_docs = { enable = true },
     indent = { enable = true },
   }
+
+  vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 end
 
 return M
