@@ -1,17 +1,22 @@
 #!/bin/bash
 
-battery() {
-	BAT=`ls /sys/class/power_supply | grep BAT | head -n 1`
-	cat /sys/class/power_supply/${BAT}/capacity
-}
-battery_stat() {
-	BAT=`ls /sys/class/power_supply | grep BAT | head -n 1`
-	cat /sys/class/power_supply/${BAT}/status
-}
+BAT=`ls /sys/class/power_supply | grep BAT | head -n 1`
+STAT=`cat /sys/class/power_supply/${BAT}/status`
+CAP=`cat /sys/class/power_supply/${BAT}/capacity`
+
+if [[ $STAT -eq "Charging" && $CAP -ge 95 ]]; then
+  notify-send "Battery is full. Please consider discharging"
+elif [[ $STAT -eq "Discharging" && $CAP -le 15 && $CAP -gt 5 ]]; then 
+  notify-send "Low battery. Please plugging in the charger."
+elif [[ $STAT == "Discharging" && $CAP -le 5 ]]; then 
+  notify-send \
+    --urgency "critical" \
+    "Extremely low battery. Please plugging in the charger."
+fi
 
 if [[ "$1" == "--bat" ]]; then
-	battery
+  echo $CAP
 elif [[ "$1" == "--bat-st" ]]; then
-	battery_stat
+  echo $STAT
 fi
 

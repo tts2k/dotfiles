@@ -12,9 +12,8 @@ export BROWSER=firefox
 export FZF_DEFAULT_COMMAND='fd --type f'
 export MOZ_USE_OMTC=1
 export PATH=$PATH:~/.local/bin:~/go/bin/:~/.cabal/bin/:~/.nimble/bin
-export TERM=xterm-kitty
-
-HISTFILESIZE=50000
+#export TERM=xterm-kitty
+export HISTFILESIZE=50000
 
 eval "$(thefuck --alias)"
 

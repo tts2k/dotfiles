@@ -9,9 +9,28 @@ local M = {
       url = 'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
       config = true
     },
+    {
+      "pmizio/typescript-tools.nvim",
+      dependencies = { "nvim-lua/plenary.nvim" }
+    },
   },
   keys = require('plugins.lsp.keymap')
 }
+
+local initInlayHintsAutoCmd = function(client, bufnr)
+  vim.api.nvim_create_augroup("lsp_augroup", { clear = true })
+
+  vim.api.nvim_create_autocmd("InsertEnter", {
+    buffer = bufnr,
+    callback = function() vim.lsp.inlay_hint(bufnr, true) end,
+    group = "lsp_augroup"
+  })
+  vim.api.nvim_create_autocmd("InsertLeave", {
+    buffer = bufnr,
+    callback = function() vim.lsp.inlay_hint(bufnr, false) end,
+    group = "lsp_augroup"
+  })
+end
 
 function M.config()
   require('mason')
@@ -20,16 +39,10 @@ function M.config()
   local function on_attach(client, bufnr)
     require('nvim-navic').attach(client, bufnr)
     vim.api.nvim_set_option_value('signcolumn', 'yes', { scope = 'local' })
+    initInlayHintsAutoCmd(client, bufnr)
   end
 
   local servers = {
-    tsserver = {
-      settings = {
-        completions = {
-          completeFunctionCalls = true
-        }
-      }
-    },
     clangd = {},
     omnisharp = {},
     rust_analyzer = {},
@@ -37,15 +50,18 @@ function M.config()
     prismals = {},
     bashls = {},
     gopls = require('go.lsp').config(),
-    golangci_lint_ls = {},
     svelte = {},
+    tailwindcss = {},
     html = {},
+    jsonls = {},
+    taplo = {},
     lua_ls = {
       Lua = {
         runtime = { version = 'LuaJIT' },
         diagnostics = { globals = { 'vim' } },
         workspace = { library = vim.api.nvim_get_runtime_file("", true) },
         telemetry = { enable = false },
+        hint = { enable = true }
       },
     }
   }
@@ -62,6 +78,24 @@ function M.config()
     opts = vim.tbl_deep_extend('force', {}, options, opts or {})
     require('lspconfig')[server].setup(opts)
   end
+
+  require("typescript-tools").setup({
+    on_attach = on_attach,
+    settings = {
+      completions = {
+        completeFunctionCalls = true
+      },
+      tsserver_file_preferences = {
+        includeInlayParameterNameHints = "all",
+        includeInlayVariableTypeHints = true,
+        includeCompletionsForModuleExports = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayEnumMemberValueHints = true,
+        quotePreference = "auto",
+      }
+    }
+  })
 
   require('plugins.null-ls').setup(options)
 end
