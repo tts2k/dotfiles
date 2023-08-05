@@ -59,14 +59,6 @@ return {
   },
 
   {
-    'ggandor/leap.nvim',
-    event = 'BufEnter',
-    config = function()
-      require('leap').add_default_mappings()
-    end
-  },
-
-  {
     'b0o/mapx.nvim',
     config = { global = true, whichkey = true },
     dependencies = {
@@ -146,5 +138,35 @@ return {
     "kylechui/nvim-surround",
     event = "BufEnter",
     opts = {}
-  }
+  },
+
+  {
+    "wintermute-cell/gitignore.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim" }
+  },
+
+  {
+    "Dhanus3133/LeetBuddy.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    opts = {}
+  },
+
+  {
+    "shellRaining/hlchunk.nvim",
+    event = { "UIEnter" },
+    opts = {
+      indent = {
+        use_treesitter = true
+      },
+      line_num = {
+        use_treesitter = true
+      },
+      blank = {
+        enable = false
+      }
+    }
+  },
 }

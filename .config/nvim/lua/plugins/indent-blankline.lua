@@ -1,6 +1,7 @@
 local M = {
   'lukas-reineke/indent-blankline.nvim',
   event = 'BufReadPre',
+  enable = false,
   dependencies = {
     'nvim-treesitter/nvim-treesitter'
   }

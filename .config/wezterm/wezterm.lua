@@ -94,12 +94,12 @@ local keys = {
   {
     key = 'x',
     mods = 'LEADER',
-    action = act.SplitHorizontal { domain = 'CurrentPaneDomain' }
+    action = act.SplitVertical { domain = 'CurrentPaneDomain' }
   },
   {
     key = 'v',
     mods = 'LEADER',
-    action = act.SplitVertical { domain = "CurrentPaneDomain" }
+    action = act.SplitHorizontal { domain = "CurrentPaneDomain" }
   },
   {
     key = 'd',
@@ -231,10 +231,10 @@ local ssh_domains = {
 
 return {
   font = wezterm.font{
-    family = 'Cascadia Code',
-    weight = 'Regular'
+    family = 'JetBrains Mono',
+    weight = 'Medium'
   },
-  font_size = 12,
+  font_size = 11,
   adjust_window_size_when_changing_font_size = false,
 
   force_reverse_video_cursor = true,

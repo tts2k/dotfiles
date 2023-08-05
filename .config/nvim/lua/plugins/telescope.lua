@@ -1,17 +1,7 @@
 local M = {
   'nvim-telescope/telescope.nvim',
   event = 'VeryLazy',
-  dependencies = {
-    'nvim-lua/plenary.nvim',
-    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-    'nvim-telescope/telescope-file-browser.nvim',
-    'nvim-telescope/telescope-project.nvim',
-    'nvim-telescope/telescope-ui-select.nvim',
-  },
-}
-
-function M.config()
-  require('telescope').setup {
+  opts = {
     defaults = {
       layout_strategy = 'vertical',
       color_devicons = true,
@@ -50,7 +40,19 @@ function M.config()
         require('telescope.themes').get_dropdown()
       }
     }
-  }
+  },
+  dependencies = {
+    'nvim-lua/plenary.nvim',
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+    'nvim-telescope/telescope-file-browser.nvim',
+    'nvim-telescope/telescope-project.nvim',
+    'nvim-telescope/telescope-ui-select.nvim',
+  },
+}
+
+function M.config(opts)
+  require('telescope').setup(opts)
+  require("telescope").load_extension("ui-select")
 end
 
 local tls_util = require('util.telescope')
