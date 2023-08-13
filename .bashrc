@@ -1,19 +1,30 @@
-source /usr/share/fzf/key-bindings.bash
 source /usr/share/fzf/completion.bash
 source /usr/share/git/completion/git-prompt.sh
 source /usr/share/nvm/init-nvm.sh
 
+export PS1="\[$(tput setaf 5)\]\w\]\[$(tput setaf 3)\]\[\$(__git_ps1 \" [%s]\")\]\[$(tput setaf 2)\] \$ \[$(tput sgr0)\]"
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
-export PS1="\[$(tput setaf 5)\]\w\]\[$(tput setaf 3)\]\[\$(__git_ps1 \" [%s]\")\]\[$(tput setaf 2)\] \$ \[$(tput sgr0)\]"
+source /usr/share/git/completion/git-prompt.sh
+source /usr/share/nvm/init-nvm.sh
 
 export EDITOR=nvim
 export BROWSER=firefox
 export FZF_DEFAULT_COMMAND='fd --type f'
 export MOZ_USE_OMTC=1
 export PATH=$PATH:~/.local/bin:~/go/bin/:~/.cabal/bin/:~/.nimble/bin
-#export TERM=xterm-kitty
 export HISTFILESIZE=50000
+
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+
+HISTFILESIZE=50000
+=======
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+export TERM=xterm-kitty
 
 eval "$(thefuck --alias)"
 

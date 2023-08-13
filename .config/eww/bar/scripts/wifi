@@ -23,4 +23,3 @@ elif [[ "$1" == "--ESSID" ]]; then
 elif [[ "$1" == "--ICON" ]]; then
     echo $icon
 fi
-

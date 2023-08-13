@@ -8,7 +8,10 @@ local M = {
   ft = {"go", "gomod"},
   build = ':lua require("go.install").update_all_sync()',
   opts = {
-    lsp_cfg = false
+    lsp_cfg = false,
+    lsp_inlay_hints = {
+        enable = false
+      }
   }
 }
 

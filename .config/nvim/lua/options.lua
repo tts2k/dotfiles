@@ -17,3 +17,8 @@ vim.wo.wrap = false
 
 -- Leader map
 vim.g.mapleader = " "
+
+-- Neovide config
+if (vim.g.neovide) then
+  vim.o.guifont = "JetBrains Mono Medium:h11"
+end
