@@ -17,30 +17,9 @@ local M = {
   keys = require('plugins.lsp.keymap')
 }
 
-local initInlayHintsAutoCmd = function(client, bufnr)
-  vim.api.nvim_create_augroup("lsp_augroup", { clear = true })
-
-  vim.api.nvim_create_autocmd("InsertEnter", {
-    buffer = bufnr,
-    callback = function() vim.lsp.inlay_hint(bufnr, true) end,
-    group = "lsp_augroup"
-  })
-  vim.api.nvim_create_autocmd("InsertLeave", {
-    buffer = bufnr,
-    callback = function() vim.lsp.inlay_hint(bufnr, false) end,
-    group = "lsp_augroup"
-  })
-end
-
 function M.config()
   require('mason')
   require('plugins.lsp.diagnostics').setup()
-
-  local function on_attach(client, bufnr)
-    require('nvim-navic').attach(client, bufnr)
-    vim.api.nvim_set_option_value('signcolumn', 'yes', { scope = 'local' })
-    initInlayHintsAutoCmd(client, bufnr)
-  end
 
   local servers = {
     clangd = {},

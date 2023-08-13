@@ -1,11 +1,11 @@
 local keys = {
   {
-    '<Leader>du',
+    '<Leader>D',
     function() require('dapui').toggle() end,
     desc = 'DEBUG: Open debug UI'
   },
   {
-    '<Leader>dt',
+    'F9',
     function() require('dap').toggle_breakpoint() end,
     desc = 'DEBUG: Set breakpoint'
   },

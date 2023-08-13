@@ -74,8 +74,9 @@ return {
 
   {
     'karb94/neoscroll.nvim',
+    enabled = function() return vim.g.neovide == nil end,
     config = function()
-        require('neoscroll').setup({
+      require('neoscroll').setup({
         hide_cursor = false
       })
     end,
@@ -158,9 +159,6 @@ return {
     "shellRaining/hlchunk.nvim",
     event = { "UIEnter" },
     opts = {
-      indent = {
-        use_treesitter = true
-      },
       line_num = {
         use_treesitter = true
       },
@@ -169,4 +167,9 @@ return {
       }
     }
   },
+
+  {
+    "folke/neodev.nvim",
+    opts = {}
+  }
 }

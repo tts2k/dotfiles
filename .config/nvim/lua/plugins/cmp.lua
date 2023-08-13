@@ -20,7 +20,7 @@ function M.config()
   local luasnip = require('luasnip')
 
   local cmp_tab_mapping = function(fallback)
-  if cmp.visible() then
+    if cmp.visible() then
       local entry = cmp.get_selected_entry()
       if not entry then
         cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
@@ -28,7 +28,7 @@ function M.config()
         cmp.confirm()
       end
     elseif luasnip.jumpable(1) then
-        luasnip.jump(1)
+      luasnip.jump(1)
     else
       fallback()
     end
@@ -47,11 +47,11 @@ function M.config()
   cmp.setup({
     window = {
       completion = {
-        border = {'╭', '─', '╮', '│', '╯', '─', '╰', '│'},
+        border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
         winhighlight = 'Normal:Normal,FloatBorder:FloatBorder,CursorLine:CursorLine,Search:None',
       },
       documentation = {
-        border = {'╭', '─', '╮', '│', '╯', '─', '╰', '│'},
+        border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
         winhighlight = 'Normal:Normal,FloatBorder:FloatBorder',
       },
     },
@@ -69,7 +69,7 @@ function M.config()
     },
     snippet = {
       expand = function(args)
-          require("luasnip").lsp_expand(args.body)
+        require("luasnip").lsp_expand(args.body)
       end,
     },
     mapping = {
@@ -95,6 +95,6 @@ function M.config()
     'confirm_done',
     cmp_autopairs.on_confirm_done()
   )
-  end
+end
 
 return M

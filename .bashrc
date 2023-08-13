@@ -1,6 +1,5 @@
-source /usr/share/fzf/key-bindings.bash
 source /usr/share/fzf/completion.bash
-export PS1="\[$(tput setaf 6)\]\w \\[$(tput setaf 2)\]\$ \[$(tput sgr0)\]"
+export PS1="\[$(tput setaf 5)\]\w\]\[$(tput setaf 3)\]\[\$(__git_ps1 \" [%s]\")\]\[$(tput setaf 2)\] \$ \[$(tput sgr0)\]"
 
 export EDITOR=nvim
 export BROWSER=firefox
