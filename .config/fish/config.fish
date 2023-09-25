@@ -3,4 +3,5 @@ if status is-interactive
   starship init fish | source
   source ~/.config/fish/conf.d/kanagawa.fish
   set -g fish_greeting ""
+  zoxide init fish | source
 end

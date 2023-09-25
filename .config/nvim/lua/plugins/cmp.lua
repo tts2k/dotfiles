@@ -4,13 +4,22 @@ local M = {
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
-    { "hrsh7th/cmp-cmdline" },
-    { "dmitmel/cmp-cmdline-history" },
+    "hrsh7th/cmp-cmdline",
+    "dmitmel/cmp-cmdline-history",
     "hrsh7th/cmp-path",
     "saadparwaiz1/cmp_luasnip",
     'onsails/lspkind.nvim',
     'L3MON4D3/LuaSnip',
-    { 'windwp/nvim-autopairs', config = true },
+    {
+      'windwp/nvim-autopairs',
+      opts = {
+        disable_filetype = {
+          "TelescopePrompt",
+          "guihua",
+          "guihua_rust",
+        }
+      }
+    },
   },
 }
 
@@ -82,7 +91,6 @@ function M.config()
     },
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-      { name = 'nvim_lsp_signature_help' },
       { name = 'luasnip' },
       { name = 'path' },
     }, {
@@ -90,6 +98,7 @@ function M.config()
     }),
   })
 
+  -- autopairs
   local cmp_autopairs = require('nvim-autopairs.completion.cmp');
   cmp.event:on(
     'confirm_done',

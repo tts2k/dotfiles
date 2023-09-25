@@ -1,74 +1,41 @@
 return {
   'nvim-lua/plenary.nvim',
+
   {
     'elkowar/yuck.vim',
-    ft = {
-      "yuck"
-    }
+    ft = { "yuck" }
   },
+
   {
     'RRethy/vim-illuminate',
-    event = "BufEnter"
+    event = "BufEnter",
+    keys = {
+      { '[[', function() require("illuminate").goto_prev_reference() end, desc = "illuminate next" },
+      { ']]', function() require("illuminate").goto_next_reference() end, desc = "illuminate next" }
+    }
   },
+
   {
     'williamboman/mason.nvim',
-    config = true,
+    opts = {},
     cmd = "Mason"
   },
 
   {
     'norcalli/nvim-colorizer.lua',
-    config = true,
+    opts = {},
     event = 'BufReadPre'
   },
 
   {
-    'folke/noice.nvim',
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      {
-        "rcarriga/nvim-notify",
-        keys = {
-          {
-            '<Leader><BS>',
-            function() require('notify').dismiss() end,
-            desc = 'Dismiss all notifications'
-          }
-        }
-      },
-    },
-    config = true
-  },
-
-  {
-    'sitiom/nvim-numbertoggle',
-    event = 'VeryLazy'
-  },
-
-  {
     'folke/which-key.nvim',
-    config = true,
-  },
-
-  {
-    "SmiteshP/nvim-navic",
-    config = function()
-      vim.g.navic_silence = true
-      require('nvim-navic').setup({ hightlight = true, depth_limit = 5 })
-    end
-  },
-
-  {
-    'b0o/mapx.nvim',
-    config = { global = true, whichkey = true },
-    dependencies = {
-      'folke/which-key.nvim'
-    }
+    event = "VeryLazy",
+    opts = {},
   },
 
   {
     'nvim-tree/nvim-web-devicons',
-    config = { default = true },
+    opts = { default = true },
     event = 'VeryLazy'
   },
 
@@ -80,22 +47,25 @@ return {
         hide_cursor = false
       })
     end,
+    cond = function()
+      return vim.g.neovide == nil
+    end,
     event = 'VeryLazy'
   },
 
   {
     'danymat/neogen',
     event = 'BufEnter',
-    config = true,
+    opts = {},
     keys = {
-      {'<Leader>gj', function() require('neogen').generate({}) end, desc = 'Generate jsdoc comment' }
+      { '<Leader>gj', function() require('neogen').generate({}) end, desc = 'Generate jsdoc comment' }
     }
   },
 
   {
     'barrett-ruth/import-cost.nvim',
     build = 'sh install.sh yarn',
-    config = true,
+    opts = {},
     ft = {
       'javascript',
       'javascriptreact',
@@ -120,30 +90,16 @@ return {
 
   {
     "toppair/peek.nvim",
-    build = "deno task --quiet build:fast"
-  },
-
-  {
-    "JellyApple102/flote.nvim",
-    opts = {},
-    cmd = "Flote"
-  },
-
-  {
-    "numToStr/Comment.nvim",
-    opts = {},
-    event = "BufEnter"
-  },
-
-  {
-    "kylechui/nvim-surround",
-    event = "BufEnter",
-    opts = {}
-  },
-
-  {
-    "wintermute-cell/gitignore.nvim",
-    dependencies = { "nvim-telescope/telescope.nvim" }
+    build = "deno task --quiet build:fast",
+    opts = {
+      app = "browser:"
+    },
+    cmd = "Peek",
+    config = function(_, opts)
+      require('peek').setup(opts)
+      vim.api.nvim_create_user_command("PeekOpen", require('peek').open, {})
+      vim.api.nvim_create_user_command("PeekOpen", require('peek').open, {})
+    end
   },
 
   {
@@ -157,7 +113,7 @@ return {
 
   {
     "shellRaining/hlchunk.nvim",
-    event = { "UIEnter" },
+    event = { "BufReadPre" },
     opts = {
       line_num = {
         use_treesitter = true
@@ -171,5 +127,23 @@ return {
   {
     "folke/neodev.nvim",
     opts = {}
+  },
+
+  {
+    "folke/zen-mode.nvim",
+    cmd = "ZenMode",
+    opts = {},
+    dependencies = {
+      "folke/twilight.nvim"
+    }
+  },
+
+  {
+    '2kabhishek/nerdy.nvim',
+    dependencies = {
+      'stevearc/dressing.nvim',
+      'nvim-telescope/telescope.nvim',
+    },
+    cmd = 'Nerdy',
   }
 }

@@ -1,4 +1,3 @@
--- custom highlight groups
 local M = {
   'rebelot/kanagawa.nvim',
   lazy = false,
@@ -8,6 +7,8 @@ local M = {
 function M.config()
   local overrides = function(colors)
     local theme = colors.theme
+
+    -- custom highlight groups
     return {
       TelescopeTitle = { fg = theme.ui.special, bold = true },
       TelescopePromptNormal = { bg = theme.ui.bg_p1 },

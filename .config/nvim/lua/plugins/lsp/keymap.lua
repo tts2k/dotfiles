@@ -1,8 +1,34 @@
 local ui = require('util.ui')
+
+local toggle_virtual_lines = function()
+  vim.diagnostic.config({
+    virtual_lines = not vim.diagnostic.config().virtual_lines
+  })
+end
+
 local keys = {
   {
-    '<Leader>P', function() vim.lsp.buf.code_action() end,
-    desc = 'Code actions'
+    '<Leader>P',
+    function() vim.lsp.buf.code_action() end,
+    desc = 'Code action'
+  },
+  {
+    'K',
+    function() vim.lsp.buf.hover() end,
+    desc = 'Open hover menu'
+  },
+  {
+    '<Leader>r',
+    function() vim.lsp.buf.rename() end,
+    desc = 'LSP rename'
+  },
+  { '<Leader>ff', function() vim.lsp.buf.format() end, desc = 'Format current buffer' },
+
+  -- find/goto
+  {
+    '<Leader>fn',
+    '<cmd>Navbuddy<CR>',
+    desc = 'Open navbuddy'
   },
   {
     '<Leader>fm',
@@ -29,6 +55,13 @@ local keys = {
     function() ui.telescope.builtin('references', nil, 'get_cursor') end,
     desc = 'Show references'
   },
+
+  -- diagnostic
+  { '<Leader>\'' ,function() toggle_virtual_lines() end, desc = 'Toggle virtual line' },
+  { '<Leader>df', function() vim.diagnostic.open_float() end, desc = 'Open diagnostic float' },
+  { '<Leader>dn', function() vim.diagnostic.goto_next() end, desc = 'Next diagnostic' },
+  { '<Leader>dp', function() vim.diagnostic.goto_prev() end, desc = 'Prev diagnostic' },
 }
 
 return keys
+
