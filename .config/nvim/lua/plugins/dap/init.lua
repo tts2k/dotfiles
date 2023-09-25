@@ -6,8 +6,11 @@ local M = {
     },
     {
       'rcarriga/nvim-dap-ui',
-      config = true
+      opts = {}
     },
+    {
+      'theHamsta/nvim-dap-virtual-text'
+    }
   },
   keys = require('plugins.dap.keymap')
 }

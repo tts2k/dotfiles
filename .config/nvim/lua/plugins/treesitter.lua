@@ -5,7 +5,7 @@ local M = {
   opts = {
   },
   dependencies = {
-    'nvim-treesitter/nvim-treesitter-context',
+    'nvim-treesitter/nvim-treesitter-textobjects',
     'nvim-treesitter/nvim-tree-docs',
     'windwp/nvim-ts-autotag'
   }

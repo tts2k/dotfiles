@@ -4,7 +4,14 @@ local M = {
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons',
-    'MunifTanjim/nui.nvim'
+    'MunifTanjim/nui.nvim',
+    {
+      's1n7ax/nvim-window-picker',
+      opts = {
+        hint = "floating-big-letter",
+
+      }
+    }
   },
   keys = {
     { "<Leader>n", "<cmd>Neotree<CR>" }
@@ -14,8 +21,8 @@ local M = {
       winbar = true,
       content_layout = "center",
       sources = {
-        { source = "filesystem",  display_name = "  File" },
-        { source = "git_status",  display_name = "  Git" },
+        { source = "filesystem", display_name = "  File" },
+        { source = "git_status", display_name = "  Git" },
         { source = "diagnostic", display_name = "  Diagnostics" },
       }
     },

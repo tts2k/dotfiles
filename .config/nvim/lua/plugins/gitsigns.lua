@@ -22,7 +22,12 @@ local M = {
     {
       '<Leader>gS',
       '<cmd>Gitsigns stage_buffer<CR>',
-      desc = 'Gitsigns: Stage hunk'
+      desc = 'Gitsigns: Stage buffer'
+    },
+    {
+      '<Leader>gl',
+      '<cmd>Gitsigns blame_line<CR>',
+      desc = 'Gitsigns: Blame line'
     },
     {
       '<Leader>gR',

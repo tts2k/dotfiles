@@ -77,17 +77,17 @@ end
 
 M.keys = {
   {
-    "<Leader>dd",
+    "<Leader>Dd",
     function() openDocsCurrentFt() end,
     desc = "Open documentation of current buffer filetype"
   },
   {
-    "<Leader>do",
+    "<Leader>Do",
     "<cmd>DevdocsOpen<CR>",
     desc = 'Open documentation'
   },
   {
-    "<Leader>df",
+    "<Leader>Df",
     "<cmd>DevdocsOpenFloat<CR>",
     desc = 'Open documentation floated'
   },

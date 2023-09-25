@@ -7,11 +7,19 @@ local M = {
     {
       '~whynothugo/lsp_lines.nvim',
       url = 'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
-      config = true
+      opts = {}
     },
     {
       "pmizio/typescript-tools.nvim",
       dependencies = { "nvim-lua/plenary.nvim" }
+    },
+    {
+      "SmiteshP/nvim-navbuddy",
+      dependencies = {
+        "SmiteshP/nvim-navic",
+        "MunifTanjim/nui.nvim"
+      },
+      opts = { lsp = { auto_attach = true } }
     },
   },
   keys = require('plugins.lsp.keymap')
@@ -33,7 +41,6 @@ function M.config()
     tailwindcss = {},
     html = {},
     jsonls = {},
-    taplo = {},
     lua_ls = {
       Lua = {
         runtime = { version = 'LuaJIT' },
@@ -45,8 +52,7 @@ function M.config()
     }
   }
 
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
   local options = {
     on_attach = on_attach,
@@ -75,8 +81,6 @@ function M.config()
       }
     }
   })
-
-  require('plugins.null-ls').setup(options)
 end
 
 return M

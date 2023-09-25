@@ -1,18 +1,16 @@
 local M = {
   "jose-elias-alvarez/null-ls.nvim",
   event = 'BufReadPre',
-  disable = true
 }
 
-function M.setup(options)
+function M.config()
   local nls = require('null-ls')
   nls.setup({
     sources = {
-      nls.builtins.formatting.prismaFmt
+      nls.builtins.formatting.prismaFmt,
+      nls.builtins.formatting.black,
     }
   })
-
-  on_attach = options.on_attach
 end
 
 return M
