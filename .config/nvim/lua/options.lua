@@ -20,6 +20,6 @@ vim.g.mapleader = " "
 
 --gui
 if vim.g.neovide then
-  vim.opt.guifont = { "JetBrains Mono", ":h11"}
+  vim.opt.guifont = { "JetBrains Mono", ":h11.5"}
   vim.g.neovide_cursor_vfx_mode = "pixiedust"
 end
