@@ -3,6 +3,7 @@ local M = {
   event = "BufReadPost",
   dependencies = {
     "kevinhwang91/promise-async",
+    "luukvbaal/statuscol.nvim",
   },
   opts = {
     provider_selector = function()
