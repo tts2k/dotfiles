@@ -8,44 +8,44 @@ local M = {
   },
   keys = {
     {
-      '<Leader>gs',
+      '<Leader>Gs',
       '<cmd>Gitsigns stage_hunk<CR>',
       mode = {'n', 'v'},
       desc = 'Gitsigns: Stage hunk'
     },
     {
-      '<Leader>gr',
+      '<Leader>Gr',
       '<cmd>Gitsigns reset_hunk<CR>',
       mode = {'n', 'v'},
       desc = 'Gitsigns: Reset hunk'
     },
     {
-      '<Leader>gS',
+      '<Leader>GS',
       '<cmd>Gitsigns stage_buffer<CR>',
       desc = 'Gitsigns: Stage buffer'
     },
     {
-      '<Leader>gl',
+      '<Leader>Gl',
       '<cmd>Gitsigns blame_line<CR>',
       desc = 'Gitsigns: Blame line'
     },
     {
-      '<Leader>gR',
+      '<Leader>GR',
       '<cmd>Gitsigns reset_buffer<CR>',
       desc = 'Gitsigns: Reset buffer'
     },
     {
-      '<Leader>gp',
+      '<Leader>Gp',
       '<cmd>Gitsigns preview_hunk<CR>',
       desc = 'Gitsigns: Preview hunk'
     },
     {
-      '<Leader>gD',
+      '<Leader>GD',
       action = '<cmd>Gitsigns toggle_deleted<CR>',
       desc = 'Gitsigns: Toggle deleted'
     },
     {
-    '<Leader>gd',
+    '<Leader>Gd',
       '<cmd>Gitsigns diffthis<CR>',
       desc = 'Gitsigns: Show diff'
     },
