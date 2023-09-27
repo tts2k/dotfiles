@@ -79,13 +79,13 @@ M.keys = {
     'Fuzzy find register'
   },
   {
-    '<Leader>.r',
+    '<Leader>.',
     function() ui.telescope.builtin('resume') end,
     desc =
     'Resume last search'
   },
   {
-    '<Leader>.p',
+    '<Leader>>',
     function() ui.telescope.builtin('pickers') end,
     desc =
     'Search last pickers'
