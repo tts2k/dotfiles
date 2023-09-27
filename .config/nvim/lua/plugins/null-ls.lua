@@ -9,6 +9,7 @@ function M.config()
     sources = {
       nls.builtins.formatting.prismaFmt,
       nls.builtins.formatting.black,
+      nls.builtins.formatting.prettier
     }
   })
 end

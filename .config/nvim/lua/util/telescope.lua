@@ -1,8 +1,8 @@
 -- Change telescope layout based on screen size
 local telescope_opt = function(opts)
-  local width = vim.api.nvim_win_get_width(0)
+  local width = vim.o.columns
 
-  if width > 150 then
+  if width > 100 then
     if opts == nil then
       opts = {}
     end

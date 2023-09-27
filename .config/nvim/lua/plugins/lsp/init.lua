@@ -55,7 +55,6 @@ function M.config()
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
   local options = {
-    on_attach = on_attach,
     capabilities = capabilities,
   }
 
@@ -65,7 +64,6 @@ function M.config()
   end
 
   require("typescript-tools").setup({
-    on_attach = on_attach,
     settings = {
       completions = {
         completeFunctionCalls = true
