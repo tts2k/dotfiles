@@ -151,15 +151,29 @@ ins_right {
     local msg = 'No Active Lsp'
     local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
     local clients = vim.lsp.get_active_clients()
+
     if next(clients) == nil then
       return msg
     end
+
+    local client_text = {}
     for _, client in ipairs(clients) do
       local filetypes = client.config.filetypes
       if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-        return client.name
+        table.insert(client_text, client.name)
       end
     end
+
+    if #client_text > 0 then
+      local result = client_text[1]
+
+      for i = 2, #client_text do
+        result = result .. ', ' .. client_text[i]
+      end
+
+      return result
+    end
+
     return msg
   end,
   icon = '',
