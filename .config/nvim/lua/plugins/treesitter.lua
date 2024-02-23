@@ -17,7 +17,8 @@ function M.config()
       'bash', 'cpp', 'c_sharp', 'cmake', 'comment', 'go',
       'css', 'html', 'java', 'javascript', 'json', 'latex',
       'lua', 'markdown', 'make', 'prisma', 'sql', 'vim',
-      'typescript', 'tsx', 'scss', 'rust', 'python', 'svelte'
+      'typescript', 'tsx', 'scss', 'rust', 'python', 'svelte',
+      'markdown_inline', 'regex'
     },
     highlight = { enable = true },
     autotag = { enable = true },

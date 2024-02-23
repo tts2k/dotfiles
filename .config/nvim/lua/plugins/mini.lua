@@ -4,8 +4,9 @@ local M = {
   dependencies = {
     'nvim-treesitter/nvim-treesitter'
   },
-  use = {
+  opts = {
     "comment",
+    "trailspace",
     {
       "surround",
       opts = {
@@ -40,24 +41,25 @@ local M = {
   }
 }
 
-function M.config(plugin)
-  for i in ipairs(plugin.use) do
-    local use = plugin.use[i]
+function M.config(_, opts)
+  for i in ipairs(opts) do
+    local use = opts[i]
+    local use_type = type(use)
 
-    if (type(use) == 'string') then
+    -- string
+    if (use_type == 'string') then
       require('mini.' .. use).setup()
       goto continue
     end
 
-    if (type(use) == 'table' and type(use.opts) == 'function') then
+    -- function
+    if (use_type == 'table' and type(use.opts) == "function") then
       require('mini.' .. use[1]).setup(use.opts())
       goto continue
     end
 
-    if (type(use) == 'table') then
-      require('mini.' .. use[1]).setup(use.opts)
-      goto continue
-    end
+    -- table
+    require('mini.' .. use[1]).setup(use.opts)
 
     ::continue::
   end

@@ -9,10 +9,6 @@ return {
   {
     'RRethy/vim-illuminate',
     event = "BufEnter",
-    keys = {
-      { '[[', function() require("illuminate").goto_prev_reference() end, desc = "illuminate next" },
-      { ']]', function() require("illuminate").goto_next_reference() end, desc = "illuminate next" }
-    }
   },
 
   {
@@ -58,19 +54,7 @@ return {
     event = 'BufEnter',
     opts = {},
     keys = {
-      { '<Leader>gj', function() require('neogen').generate({}) end, desc = 'Generate jsdoc comment' }
-    }
-  },
-
-  {
-    'barrett-ruth/import-cost.nvim',
-    build = 'sh install.sh yarn',
-    opts = {},
-    ft = {
-      'javascript',
-      'javascriptreact',
-      'typescript',
-      'typescriptreact'
+      { '<Leader>gj', function() require('neogen').generate({ snippet_engine = 'luasnip' }) end, desc = 'Generate docs comment' }
     }
   },
 
@@ -92,7 +76,7 @@ return {
     "toppair/peek.nvim",
     build = "deno task --quiet build:fast",
     opts = {
-      app = "browser:"
+      app = "browser"
     },
     cmd = "Peek",
     config = function(_, opts)
@@ -112,7 +96,8 @@ return {
   },
 
   {
-    "shellRaining/hlchunk.nvim",
+    "tts2k/hlchunk.nvim",
+    branch = "exclude-ft",
     event = { "BufReadPre" },
     opts = {
       line_num = {
@@ -145,5 +130,44 @@ return {
       'nvim-telescope/telescope.nvim',
     },
     cmd = 'Nerdy',
+  },
+
+  {
+    "simeji/winresizer",
+    event = "UIEnter",
+    keys = {
+      { "<C-s>", "<cmd>WinResizerStartMove<CR>", desc = "Start resizing win" }
+    }
+  },
+
+  {
+    "lervag/vimtex",
+    lazy = false,
+    init = function()
+      vim.g.vimtex_view_method = 'zathura'
+    end
+  },
+
+  {
+    'stevearc/aerial.nvim',
+    opts = {
+      on_attach = function(bufnr)
+        vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
+        vim.keymap.set("n", "{", "<cmd>AerialNext<CR>", { buffer = bufnr })
+      end
+    },
+    keys = {
+      { "<Leader>a", "<cmd>AerialToggle!<CR>" }
+    },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons"
+    }
+  },
+
+  {
+    "j-hui/fidget.nvim",
+    event = "UIEnter",
+    opts = {}
   }
 }
