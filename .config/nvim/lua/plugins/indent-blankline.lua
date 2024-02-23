@@ -14,7 +14,7 @@ function M.config()
     char = "│",
     context_char = "│",
     context_patterns = {
-     "class",
+      "class",
       "^func",
       "method",
       "^if",

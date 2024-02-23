@@ -10,6 +10,7 @@ function M.config()
 
     -- custom highlight groups
     return {
+      -- Telescope
       TelescopeTitle = { fg = theme.ui.special, bold = true },
       TelescopePromptNormal = { bg = theme.ui.bg_p1 },
       TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
@@ -17,24 +18,15 @@ function M.config()
       TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
       TelescopePreviewNormal = { bg = theme.ui.bg_dim },
       TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
+
+      -- Floating window
       FloatBorder = { bg = "none" },
-      CmpPmenuSel = { bg = colors.sumiInk3 },
-      CmpPmenu = { bg = colors.sumiInk1 },
-      CmpPmenuBorder = { fg = colors.sumiInk4 },
-      CmpDocs = { bg = colors.sumiInk1 },
-      CmpDocsBorder = { fg = colors.sumiInk4 },
-      CmpItemAbbrDeprecated = { fg = colors.fujiGray, bg = "NONE", strikethrough = true },
-      CmpItemAbbrMatch = { fg = colors.crystalBlue },
-      CmpItemAbbrMatchFuzzy = { link = "CmpItemAbbrMatch" },
-      CmpItemKindVariable = { fg = colors.lightBlue },
-      CmpItemKindText = { link = "CmpItemKindVariable" },
-      CmpItemKindInterface = { link = "CmpItemKindVariable" },
-      CmpItemKindFunction = { fg = colors.springViolet1 },
-      CmpItemKindMethod = { link = "CmpItemKindFunction" },
-      CmpItemKindKeyword = { fg = colors.surimiOrange },
-      CmpItemKindUnit = { link = "CmpItemKindKeyword" },
-      CmpItemKindProperty = { link = "CmpItemKindKeyword" },
-      CmpItemKindField = { link = "CmpItemKindKeyword" }
+      NormalFloat = { bg = theme.ui.bg_m1, blend = vim.o.pumblend },
+
+      -- Illuminate
+      IlluminatedWordText = { link = "Visual" },
+      IlluminatedWordRead = { link = "Visual" },
+      IlluminatedWordWrite = { link = "Visual" },
     }
   end
 

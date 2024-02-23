@@ -8,7 +8,7 @@ local M = {
 
 M.keys = {
   {
-    '<Leader>S',
+    '<Leader>ss',
     function()
       require('spectre').toggle()
     end,
@@ -22,11 +22,12 @@ M.keys = {
     desc = "Search current word"
   },
   {
-    '<Leader>S',
+    '<Leader>sv',
     function()
       require('spectre').open_visual()
     end,
-    desc = "Search current selection"
+    desc = "Search current selection",
+    mode = "v"
   },
   {
     '<Leader>sp',

@@ -30,7 +30,6 @@ function M.config()
   require('plugins.lsp.diagnostics').setup()
 
   local servers = {
-    clangd = {},
     omnisharp = {},
     rust_analyzer = {},
     pyright = {},
@@ -39,16 +38,26 @@ function M.config()
     gopls = require('go.lsp').config(),
     svelte = {},
     tailwindcss = {},
+    bufls = {},
     html = {},
+    yamlls = {},
     jsonls = {},
     lua_ls = {
-      Lua = {
-        runtime = { version = 'LuaJIT' },
-        diagnostics = { globals = { 'vim' } },
-        workspace = { library = vim.api.nvim_get_runtime_file("", true) },
-        telemetry = { enable = false },
-        hint = { enable = true }
-      },
+      settings = {
+        Lua = {
+          runtime = { version = 'LuaJIT' },
+          diagnostics = { globals = { 'vim' } },
+          workspace = {
+            library = {
+              vim.api.nvim_get_runtime_file("", true),
+              "${3rd}/luassert/library",
+              "${3rd}/luv/library",
+            }
+          },
+          telemetry = { enable = false },
+          hint = { enable = true }
+        },
+      }
     }
   }
 

@@ -22,7 +22,7 @@ local keys = {
     function() vim.lsp.buf.rename() end,
     desc = 'LSP rename'
   },
-  { '<Leader>ff', function() vim.lsp.buf.format() end, desc = 'Format current buffer' },
+  { '<Leader>ff', function() vim.lsp.buf.format() end,        desc = 'Format current buffer' },
 
   -- find/goto
   {
@@ -57,11 +57,10 @@ local keys = {
   },
 
   -- diagnostic
-  { '<Leader>\'' ,function() toggle_virtual_lines() end, desc = 'Toggle virtual line' },
+  { '<Leader>\'', function() toggle_virtual_lines() end,      desc = 'Toggle virtual line' },
   { '<Leader>df', function() vim.diagnostic.open_float() end, desc = 'Open diagnostic float' },
-  { '<Leader>dn', function() vim.diagnostic.goto_next() end, desc = 'Next diagnostic' },
-  { '<Leader>dp', function() vim.diagnostic.goto_prev() end, desc = 'Prev diagnostic' },
+  { '<Leader>dn', function() vim.diagnostic.goto_next() end,  desc = 'Next diagnostic' },
+  { '<Leader>dp', function() vim.diagnostic.goto_prev() end,  desc = 'Prev diagnostic' },
 }
 
 return keys
-

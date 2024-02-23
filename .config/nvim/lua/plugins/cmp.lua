@@ -4,8 +4,6 @@ local M = {
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-cmdline",
-    "dmitmel/cmp-cmdline-history",
     "hrsh7th/cmp-path",
     "saadparwaiz1/cmp_luasnip",
     'onsails/lspkind.nvim',
@@ -55,14 +53,8 @@ function M.config()
 
   cmp.setup({
     window = {
-      completion = {
-        border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
-        winhighlight = 'Normal:Normal,FloatBorder:FloatBorder,CursorLine:CursorLine,Search:None',
-      },
-      documentation = {
-        border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
-        winhighlight = 'Normal:Normal,FloatBorder:FloatBorder',
-      },
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
     },
     formatting = {
       format = lspkind.cmp_format({

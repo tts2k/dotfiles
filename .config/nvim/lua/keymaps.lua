@@ -13,7 +13,7 @@ local keys = {
   {
     '<C-p>',
     '"+p',
-    desc = 'Paste from clipboard'
+    desc = 'Paste from clipboard',
   },
   {
     '<C-v>',
@@ -24,23 +24,28 @@ local keys = {
   {
     '<C-h>',
     '<C-w>h',
-    desc = 'Move to window on the left'
+    desc = 'Move to window on the left',
+    mode = { "n", "t" }
   },
   {
     '<C-j>',
     '<C-w>j',
-    desc = 'Move to window below'
+    desc = 'Move to window below',
+    mode = { "n", "t" }
   },
   {
     '<C-k>',
     '<C-w>k',
-    desc = 'Move to window above'
+    desc = 'Move to window above',
+    mode = { "n", "t" }
   },
   {
     '<C-l>',
     '<C-w>l',
-    desc = 'Move to window on the right'
+    desc = 'Move to window on the right',
+    mode = { "n", "t" }
   },
+
   {
     '<CR>',
     'o<ESC>',

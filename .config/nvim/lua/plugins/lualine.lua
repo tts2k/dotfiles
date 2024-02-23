@@ -35,11 +35,9 @@ local config = {
     lualine_x = {},
   },
   extensions = {
-    "toggleterm",
     "trouble",
     "lazy",
     "neo-tree",
-    "quickfix",
   }
 }
 
@@ -207,9 +205,9 @@ ins_right {
   symbols = { added = ' ', modified = '󰝤 ', removed = ' ' },
   cond = conditions.hide_in_width,
   diff_color = {
-    added = { fg = theme.diff.add },
-    modified = { fg = theme.diff.change },
-    removed = { fg = theme.diff.delete },
+    added = { fg = theme.vcs.added },
+    modified = { fg = theme.vcs.changed },
+    removed = { fg = theme.vcs.removed },
   }
 }
 
