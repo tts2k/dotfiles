@@ -8,6 +8,7 @@ local M = {
       typescript = { "prettierd" },
       svelte = { "prettierd" },
       sql = { "sqlfluff" },
+      json = { "biome" }
     },
     format_on_save = {
       timeout_ms = 500,

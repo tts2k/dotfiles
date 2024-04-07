@@ -37,6 +37,7 @@ function M.config()
     bashls = {},
     gopls = require('go.lsp').config(),
     svelte = {},
+    biome = {},
     tailwindcss = {},
     bufls = {},
     html = {},
