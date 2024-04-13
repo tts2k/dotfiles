@@ -7,6 +7,7 @@ local M = {
   opts = {
     "comment",
     "trailspace",
+    "bracketed",
     {
       "surround",
       opts = {
