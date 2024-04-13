@@ -5,23 +5,23 @@ local M = {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope.nvim",
     {
-      'sindrets/diffview.nvim',
-      opts = {}
-    }
+      "sindrets/diffview.nvim",
+      opts = {},
+    },
   },
   opts = {},
   keys = {
     {
-      '<Leader>gg',
-      '<cmd>Neogit<CR>',
-      desc = 'Neogit'
+      "<Leader>gg",
+      "<cmd>Neogit<CR>",
+      desc = "Neogit",
     },
     {
-      '<Leader>gc',
-      '<cmd>Neogit commit<CR>',
-      desc = 'Neogit: commit'
+      "<Leader>gc",
+      "<cmd>Neogit commit<CR>",
+      desc = "Neogit: commit",
     },
-  }
+  },
 }
 
 return M

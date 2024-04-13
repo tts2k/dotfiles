@@ -1,4 +1,4 @@
-require('options')
-require('autocmds')
-require('lazy-init')
-require('keymaps')
+require("options")
+require("autocmds")
+require("lazy-init")
+require("keymaps")

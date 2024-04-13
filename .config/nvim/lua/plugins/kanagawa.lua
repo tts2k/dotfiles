@@ -1,7 +1,7 @@
 local M = {
-  'rebelot/kanagawa.nvim',
+  "rebelot/kanagawa.nvim",
   lazy = false,
-  priority = 1000
+  priority = 1000,
 }
 
 function M.config()
@@ -30,13 +30,13 @@ function M.config()
     }
   end
 
-  require('kanagawa').setup({
+  require("kanagawa").setup({
     compile = true,
     colors = {
-      theme = { all = { ui = { bg_gutter = 'none' } } }
+      theme = { all = { ui = { bg_gutter = "none" } } },
     },
-    overrides = overrides
-  });
+    overrides = overrides,
+  })
 
   vim.cmd([[colorscheme kanagawa]])
 end

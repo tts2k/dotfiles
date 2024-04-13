@@ -1,6 +1,6 @@
 vim.opt.number = true
-vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
-vim.opt.mouse = 'a'
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
+vim.opt.mouse = "a"
 vim.opt.sw = 2
 vim.opt.splitright = true
 vim.opt.expandtab = true

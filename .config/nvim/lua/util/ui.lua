@@ -1,11 +1,11 @@
 local M = {
-  telescope = require('util.telescope')
+  telescope = require("util.telescope"),
 }
 ---@param data { label: string, opts: table }[]
 ---@param callbacks { on_submit: fun(item: { text: string }), on_close: fun() }
 ---@param opts table
 local showNuiMenu = function(data, callbacks, opts)
-  local Menu = require('nui.menu')
+  local Menu = require("nui.menu")
   local menu_items = {}
 
   for d = 1, #data do
@@ -30,21 +30,19 @@ local showNuiMenu = function(data, callbacks, opts)
     },
   }
 
-  default_opts = vim.tbl_deep_extend('force', default_opts, opts or {})
+  default_opts = vim.tbl_deep_extend("force", default_opts, opts or {})
 
-  local menu = Menu(default_opts,
-    {
-      lines = menu_items,
-      keymap = {
-        focus_next = { "j", "<Down>", "<Tab>" },
-        focus_prev = { "k", "<Up>", "<S-Tab>" },
-        close = { "<Esc>", "<C-c>" },
-        submit = { "<CR>", "<Space>" },
-      },
-      on_close = callbacks.on_close,
-      on_submit = callbacks.on_submit,
-    }
-  )
+  local menu = Menu(default_opts, {
+    lines = menu_items,
+    keymap = {
+      focus_next = { "j", "<Down>", "<Tab>" },
+      focus_prev = { "k", "<Up>", "<S-Tab>" },
+      close = { "<Esc>", "<C-c>" },
+      submit = { "<CR>", "<Space>" },
+    },
+    on_close = callbacks.on_close,
+    on_submit = callbacks.on_submit,
+  })
 
   menu:mount()
 end

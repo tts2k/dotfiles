@@ -11,17 +11,17 @@ local M = {
     workspaces = {
       {
         name = "personal",
-        path = "~/.obsidian/personal"
+        path = "~/.obsidian/personal",
       },
       {
         name = "work",
-        path = "~/.obsidian/work"
-      }
+        path = "~/.obsidian/work",
+      },
     },
     completion = {
-      nvim_cmp = true
-    }
-  }
+      nvim_cmp = true,
+    },
+  },
 }
 
 return M

@@ -21,7 +21,7 @@ local M = {
         end,
       },
       "Trouble",
-      { ft = "qf",            title = "QuickFix" },
+      { ft = "qf", title = "QuickFix" },
       {
         ft = "help",
         size = { height = 20 },
@@ -30,7 +30,7 @@ local M = {
           return vim.bo[buf].buftype == "help"
         end,
       },
-      { ft = "qf",            title = "QuickFix" },
+      { ft = "qf", title = "QuickFix" },
       { ft = "spectre_panel", size = { height = 0.4 } },
     },
     left = {
@@ -40,7 +40,7 @@ local M = {
         filter = function(buf)
           return vim.b[buf].neo_tree_source == "filesystem"
         end,
-        size = { width = 40 }
+        size = { width = 40 },
       },
       {
         ft = "neo-tree",
@@ -48,17 +48,17 @@ local M = {
         filter = function(buf)
           return vim.b[buf].neo_tree_source == "git_status"
         end,
-        size = { width = 40 }
+        size = { width = 40 },
       },
     },
     right = {
       {
         ft = "aerial",
         title = "Aerial",
-        size = { width = 50 }
+        size = { width = 50 },
       },
     },
-  }
+  },
 }
 
 return M

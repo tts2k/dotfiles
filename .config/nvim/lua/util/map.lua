@@ -12,5 +12,5 @@ return {
 
       vim.keymap.set(mode, key[1], key[2], opts)
     end
-  end
+  end,
 }

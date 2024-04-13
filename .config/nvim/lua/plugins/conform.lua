@@ -4,11 +4,12 @@ local M = {
   opts = {
     formatters_by_ft = {
       python = { "isort", "black" },
-      javascript = { "biome", },
-      typescript = { "biome", },
+      javascript = { "biome" },
+      typescript = { "biome" },
       svelte = { "prettierd" },
       sql = { "sqlfluff" },
-      json = { "biome" }
+      json = { "biome" },
+      lua = { "stylua" },
     },
     format_on_save = {
       timeout_ms = 500,
@@ -17,8 +18,8 @@ local M = {
     ["_"] = { "trim_whitespace" },
   },
   dependencies = {
-    'williamboman/mason.nvim',
-  }
+    "williamboman/mason.nvim",
+  },
 }
 
 return M

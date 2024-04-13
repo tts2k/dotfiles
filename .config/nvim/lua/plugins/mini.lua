@@ -1,8 +1,8 @@
 local M = {
-  'echasnovski/mini.nvim',
+  "echasnovski/mini.nvim",
   event = "VeryLazy",
   dependencies = {
-    'nvim-treesitter/nvim-treesitter'
+    "nvim-treesitter/nvim-treesitter",
   },
   opts = {
     "comment",
@@ -18,9 +18,9 @@ local M = {
           find_left = "gzF",
           highlight = "gzh",
           replace = "gzr",
-          update_n_lines = "gzn"
-        }
-      }
+          update_n_lines = "gzn",
+        },
+      },
     },
     {
       "ai",
@@ -33,13 +33,19 @@ local M = {
               a = { "@block.outer", "@conditional.outer", "@loop.outer" },
               i = { "@block.inner", "@conditional.inner", "@loop.inner" },
             }, {}),
-            f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
-            c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
+            f = ai.gen_spec.treesitter(
+              { a = "@function.outer", i = "@function.inner" },
+              {}
+            ),
+            c = ai.gen_spec.treesitter(
+              { a = "@class.outer", i = "@class.inner" },
+              {}
+            ),
           },
         }
-      end
-    }
-  }
+      end,
+    },
+  },
 }
 
 function M.config(_, opts)
@@ -48,19 +54,19 @@ function M.config(_, opts)
     local use_type = type(use)
 
     -- string
-    if (use_type == 'string') then
-      require('mini.' .. use).setup()
+    if use_type == "string" then
+      require("mini." .. use).setup()
       goto continue
     end
 
     -- function
-    if (use_type == 'table' and type(use.opts) == "function") then
-      require('mini.' .. use[1]).setup(use.opts())
+    if use_type == "table" and type(use.opts) == "function" then
+      require("mini." .. use[1]).setup(use.opts())
       goto continue
     end
 
     -- table
-    require('mini.' .. use[1]).setup(use.opts)
+    require("mini." .. use[1]).setup(use.opts)
 
     ::continue::
   end

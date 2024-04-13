@@ -1,14 +1,14 @@
 local M = {
-  'lukas-reineke/indent-blankline.nvim',
-  event = 'BufReadPre',
+  "lukas-reineke/indent-blankline.nvim",
+  event = "BufReadPre",
   enabled = false,
   dependencies = {
-    'nvim-treesitter/nvim-treesitter'
-  }
+    "nvim-treesitter/nvim-treesitter",
+  },
 }
 
 function M.config()
-  require('indent_blankline').setup {
+  require("indent_blankline").setup({
     show_current_context = true,
     filetype_exclude = { "dashboard", "help" },
     char = "│",
@@ -35,8 +35,8 @@ function M.config()
       "let_declaration",
       "block",
       "^.*_block",
-    }
-  }
+    },
+  })
 end
 
 return M

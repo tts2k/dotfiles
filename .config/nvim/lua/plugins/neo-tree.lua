@@ -1,19 +1,19 @@
 local M = {
-  'nvim-neo-tree/neo-tree.nvim',
+  "nvim-neo-tree/neo-tree.nvim",
   branch = "v3.x",
   dependencies = {
-    'nvim-lua/plenary.nvim',
-    'nvim-tree/nvim-web-devicons',
-    'MunifTanjim/nui.nvim',
+    "nvim-lua/plenary.nvim",
+    "nvim-tree/nvim-web-devicons",
+    "MunifTanjim/nui.nvim",
     {
-      's1n7ax/nvim-window-picker',
+      "s1n7ax/nvim-window-picker",
       opts = {
         hint = "floating-big-letter",
-      }
-    }
+      },
+    },
   },
   keys = {
-    { "<Leader>n", "<cmd>Neotree<CR>" }
+    { "<Leader>n", "<cmd>Neotree<CR>" },
   },
   opts = {
     source_selector = {
@@ -23,7 +23,7 @@ local M = {
         { source = "filesystem", display_name = "  File" },
         { source = "git_status", display_name = "  Git" },
         { source = "diagnostic", display_name = "  Diagnostics" },
-      }
+      },
     },
     window = {
       width = 40,
@@ -31,7 +31,7 @@ local M = {
         ["<space>"] = false,
         ["b["] = "prev_source",
         ["b]"] = "next_source",
-      }
+      },
     },
     close_if_lasst_window = true,
     filesystem = {
@@ -41,9 +41,11 @@ local M = {
     },
     event_handlers = {
       event = "neo_tree_buffer_enter",
-      handler = function(_) vim.opt_local.signcolumn = "auto" end
-    }
-  }
+      handler = function(_)
+        vim.opt_local.signcolumn = "auto"
+      end,
+    },
+  },
 }
 
 return M

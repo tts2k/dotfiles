@@ -9,7 +9,7 @@ local M = {
   build = ':lua require("go.install").update_all_sync()',
   opts = {
     lsp_cfg = false,
-  }
+  },
 }
 
 return M

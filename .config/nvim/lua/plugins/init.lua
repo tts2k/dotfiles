@@ -1,89 +1,99 @@
 return {
-  'nvim-lua/plenary.nvim',
+  "nvim-lua/plenary.nvim",
 
   {
-    'elkowar/yuck.vim',
-    ft = { "yuck" }
+    "elkowar/yuck.vim",
+    ft = { "yuck" },
   },
 
   {
-    'RRethy/vim-illuminate',
+    "RRethy/vim-illuminate",
     event = "BufEnter",
   },
 
   {
-    'williamboman/mason.nvim',
+    "williamboman/mason.nvim",
     opts = {},
-    cmd = "Mason"
+    cmd = "Mason",
   },
 
   {
-    'norcalli/nvim-colorizer.lua',
+    "norcalli/nvim-colorizer.lua",
     opts = {},
-    event = 'BufReadPre'
+    event = "BufReadPre",
   },
 
   {
-    'folke/which-key.nvim',
+    "folke/which-key.nvim",
     event = "VeryLazy",
     opts = {},
   },
 
   {
-    'nvim-tree/nvim-web-devicons',
+    "nvim-tree/nvim-web-devicons",
     opts = { default = true },
-    event = 'VeryLazy'
+    event = "VeryLazy",
   },
 
   {
-    'karb94/neoscroll.nvim',
-    enabled = function() return vim.g.neovide == nil end,
+    "karb94/neoscroll.nvim",
+    enabled = function()
+      return vim.g.neovide == nil
+    end,
     config = function()
-      require('neoscroll').setup({
-        hide_cursor = false
+      require("neoscroll").setup({
+        hide_cursor = false,
       })
     end,
     cond = function()
       return vim.g.neovide == nil
     end,
-    event = 'VeryLazy'
+    event = "VeryLazy",
   },
 
   {
-    'danymat/neogen',
-    event = 'BufEnter',
+    "danymat/neogen",
+    event = "BufEnter",
     opts = {},
     keys = {
-      { '<Leader>gj', function() require('neogen').generate({ snippet_engine = 'luasnip' }) end, desc = 'Generate docs comment' }
-    }
+      {
+        "<Leader>gj",
+        function()
+          require("neogen").generate({ snippet_engine = "luasnip" })
+        end,
+        desc = "Generate docs comment",
+      },
+    },
   },
 
   {
-    'glacambre/firenvim',
-    build = function() vim.fn['firenvim#install'](0) end,
+    "glacambre/firenvim",
+    build = function()
+      vim.fn["firenvim#install"](0)
+    end,
     config = function()
       vim.g.firenvim_config = {
         localSettings = {
           [".*"] = {
             cmdline = "neovim",
-          }
-        }
+          },
+        },
       }
-    end
+    end,
   },
 
   {
     "toppair/peek.nvim",
     build = "deno task --quiet build:fast",
     opts = {
-      app = "browser"
+      app = "browser",
     },
     cmd = "Peek",
     config = function(_, opts)
-      require('peek').setup(opts)
-      vim.api.nvim_create_user_command("PeekOpen", require('peek').open, {})
-      vim.api.nvim_create_user_command("PeekOpen", require('peek').open, {})
-    end
+      require("peek").setup(opts)
+      vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+      vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+    end,
   },
 
   {
@@ -92,7 +102,7 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
     },
-    opts = {}
+    opts = {},
   },
 
   {
@@ -101,17 +111,17 @@ return {
     event = { "BufReadPre" },
     opts = {
       line_num = {
-        use_treesitter = true
+        use_treesitter = true,
       },
       blank = {
-        enable = false
-      }
-    }
+        enable = false,
+      },
+    },
   },
 
   {
     "folke/neodev.nvim",
-    opts = {}
+    opts = {},
   },
 
   {
@@ -119,55 +129,55 @@ return {
     cmd = "ZenMode",
     opts = {},
     dependencies = {
-      "folke/twilight.nvim"
-    }
+      "folke/twilight.nvim",
+    },
   },
 
   {
-    '2kabhishek/nerdy.nvim',
+    "2kabhishek/nerdy.nvim",
     dependencies = {
-      'stevearc/dressing.nvim',
-      'nvim-telescope/telescope.nvim',
+      "stevearc/dressing.nvim",
+      "nvim-telescope/telescope.nvim",
     },
-    cmd = 'Nerdy',
+    cmd = "Nerdy",
   },
 
   {
     "simeji/winresizer",
     event = "UIEnter",
     keys = {
-      { "<C-s>", "<cmd>WinResizerStartMove<CR>", desc = "Start resizing win" }
-    }
+      { "<C-s>", "<cmd>WinResizerStartMove<CR>", desc = "Start resizing win" },
+    },
   },
 
   {
     "lervag/vimtex",
     lazy = false,
     init = function()
-      vim.g.vimtex_view_method = 'zathura'
-    end
+      vim.g.vimtex_view_method = "zathura"
+    end,
   },
 
   {
-    'stevearc/aerial.nvim',
+    "stevearc/aerial.nvim",
     opts = {
       on_attach = function(bufnr)
         vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
         vim.keymap.set("n", "{", "<cmd>AerialNext<CR>", { buffer = bufnr })
-      end
+      end,
     },
     keys = {
-      { "<Leader>a", "<cmd>AerialToggle!<CR>" }
+      { "<Leader>a", "<cmd>AerialToggle!<CR>" },
     },
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons"
-    }
+      "nvim-tree/nvim-web-devicons",
+    },
   },
 
   {
     "j-hui/fidget.nvim",
     event = "UIEnter",
-    opts = {}
-  }
+    opts = {},
+  },
 }
