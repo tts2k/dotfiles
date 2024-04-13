@@ -6,7 +6,7 @@ local M = {
       python = { "isort", "black" },
       javascript = { "biome", },
       typescript = { "biome", },
-      -- svelte = { "prettierd" },
+      svelte = { "prettierd" },
       sql = { "sqlfluff" },
       json = { "biome" }
     },

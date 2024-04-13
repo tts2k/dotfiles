@@ -22,14 +22,12 @@ function M.config()
   require('plugins.lsp.diagnostics').setup()
 
   local servers = {
-    omnisharp = {},
     rust_analyzer = {},
+    clangd = {},
     pyright = {},
-    prismals = {},
     bashls = {},
     gopls = require('go.lsp').config(),
     svelte = {},
-    biome = {},
     tailwindcss = {},
     bufls = {},
     html = {},
