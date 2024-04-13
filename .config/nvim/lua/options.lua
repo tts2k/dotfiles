@@ -12,9 +12,8 @@ vim.opt.showmode = false
 vim.opt.updatetime = 250
 vim.opt.laststatus = 3
 vim.opt.pumblend = 15
--- vim.opt.foldmethod = "expr"
-
 vim.wo.wrap = false
+vim.opt.colorcolumn = "80"
 
 -- Leader map
 vim.g.mapleader = " "

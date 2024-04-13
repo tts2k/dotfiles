@@ -180,4 +180,9 @@ return {
     event = "UIEnter",
     opts = {},
   },
+
+  {
+    "Bekaboo/deadcolumn.nvim",
+    event = "BufEnter",
+  },
 }
