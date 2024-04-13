@@ -4,9 +4,9 @@ local M = {
   opts = {
     formatters_by_ft = {
       python = { "isort", "black" },
-      javascript = { "prettierd" },
-      typescript = { "prettierd" },
-      svelte = { "prettierd" },
+      javascript = { "biome", },
+      typescript = { "biome", },
+      -- svelte = { "prettierd" },
       sql = { "sqlfluff" },
       json = { "biome" }
     },

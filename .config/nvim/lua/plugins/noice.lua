@@ -53,7 +53,7 @@ local M = {
         },
         border = {
           style = "rounded",
-          padding = { 0 , 1 }
+          padding = { 0, 1 }
         },
         win_options = {
           winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" }

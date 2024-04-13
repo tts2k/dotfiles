@@ -60,6 +60,11 @@ M.keys = {
   { '<Leader>p', function() ui.telescope.builtin('fd') end,                                desc = 'Find files' },
   { '<Leader>;', function() ui.telescope.builtin('buffers', { sort_lastused = true }) end, desc = 'List buffers' },
   {
+    '<Leader>m',
+    function() ui.telescope.builtin('marks') end,
+    desc = 'Show list of marks'
+  },
+  {
     '<Leader>/',
     function() ui.telescope.builtin('current_buffer_fuzzy_find') end,
     desc =

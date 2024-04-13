@@ -11,6 +11,15 @@ local M = {
   }
 }
 
+function M.init()
+  -- Extra filetypes
+  vim.filetype.add({
+    extension = {
+      templ = "templ"
+    }
+  })
+end
+
 function M.config()
   require('nvim-treesitter.configs').setup {
     ensure_installed = {

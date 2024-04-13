@@ -22,14 +22,8 @@ local keys = {
     function() vim.lsp.buf.rename() end,
     desc = 'LSP rename'
   },
-  { '<Leader>ff', function() vim.lsp.buf.format() end,        desc = 'Format current buffer' },
 
   -- find/goto
-  {
-    '<Leader>fn',
-    '<cmd>Navbuddy<CR>',
-    desc = 'Open navbuddy'
-  },
   {
     '<Leader>fm',
     function() ui.telescope.builtin('marks') end,
@@ -52,7 +46,7 @@ local keys = {
   },
   {
     '<Leader>fr',
-    function() ui.telescope.builtin('references', nil, 'get_cursor') end,
+    function() ui.telescope.builtin('lsp_references', nil, 'get_cursor') end,
     desc = 'Show references'
   },
 

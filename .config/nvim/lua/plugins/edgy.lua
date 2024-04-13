@@ -9,8 +9,7 @@ local M = {
       winhighlight = "",
     },
     animate = {
-      -- Enable only when not running in neovide
-      enabled = vim.g.neovide == nil
+      enabled = false,
     },
     bottom = {
       {
@@ -51,7 +50,14 @@ local M = {
         end,
         size = { width = 40 }
       },
-    }
+    },
+    right = {
+      {
+        ft = "aerial",
+        title = "Aerial",
+        size = { width = 50 }
+      },
+    },
   }
 }
 

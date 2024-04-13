@@ -13,14 +13,6 @@ local M = {
       "pmizio/typescript-tools.nvim",
       dependencies = { "nvim-lua/plenary.nvim" }
     },
-    {
-      "SmiteshP/nvim-navbuddy",
-      dependencies = {
-        "SmiteshP/nvim-navic",
-        "MunifTanjim/nui.nvim"
-      },
-      opts = { lsp = { auto_attach = true } }
-    },
   },
   keys = require('plugins.lsp.keymap')
 }
@@ -43,6 +35,8 @@ function M.config()
     html = {},
     yamlls = {},
     jsonls = {},
+    templ = {},
+    biome = {},
     lua_ls = {
       settings = {
         Lua = {
