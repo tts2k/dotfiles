@@ -53,4 +53,4 @@ local keys = {
   },
 }
 
-require("util.map").map(keys)
+require("util").map(keys)

@@ -1,6 +1,5 @@
-local M = {
-  telescope = require("util.telescope"),
-}
+local M = {}
+
 ---@param data { label: string, opts: table }[]
 ---@param callbacks { on_submit: fun(item: { text: string }), on_close: fun() }
 ---@param opts table
