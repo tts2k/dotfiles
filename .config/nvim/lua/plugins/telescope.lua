@@ -45,7 +45,29 @@ local M = {
   },
 }
 
+local ui = require("util").ui
+
 function M.config(_, opts)
+  vim.api.nvim_create_user_command("TelescopeTabBuffers", function()
+    local count = vim.v.count
+    if vim.api.nvim_tabpage_is_valid(count) == false then
+      return
+    end
+
+    local tab_cwd = vim.fn.getcwd(0, vim.v.count)
+    ui.telescope.builtin("buffers", { sort_lastused = true, cwd = tab_cwd })
+  end, { count = true })
+
+  vim.api.nvim_create_user_command("TelescopeTabFiles", function()
+    local count = vim.v.count
+    if vim.api.nvim_tabpage_is_valid(count) == false then
+      return
+    end
+
+    local tab_cwd = vim.fn.getcwd(0, vim.v.count)
+    ui.telescope.builtin("fd", { sort_lastused = true, cwd = tab_cwd })
+  end, { count = true })
+
   local telescope = require("telescope")
   telescope.setup(opts)
   telescope.load_extension("fzf")
@@ -54,76 +76,78 @@ function M.config(_, opts)
   telescope.load_extension("zoxide")
 end
 
-local helper = require("util").telescope
 -- Key mapping
 M.keys = {
   {
     "<Leader>p",
-    function()
-      helper.builtin("fd")
-    end,
+    "<cmd>TelescopeTabFiles<cr>",
     desc = "Find files",
   },
   {
-    "<Leader>;",
+    "<Leader>:",
     function()
-      helper.builtin("buffers", { sort_lastused = true })
+      ui.telescope.builtin("buffers", { sort_lastused = true })
     end,
+    desc = "List buffers",
+  },
+  {
+    "<Leader>;",
+    "<cmd>TelescopeTabBuffers<cr>",
     desc = "List buffers",
   },
   {
     "<Leader>m",
     function()
-      helper.builtin("marks")
+      ui.telescope.builtin("marks")
     end,
     desc = "Show list of marks",
   },
   {
     "<Leader>/",
     function()
-      helper.builtin("current_buffer_fuzzy_find")
+      ui.telescope.builtin("current_buffer_fuzzy_find")
     end,
     desc = "Current buffer fuzzy find",
   },
   {
     "<Leader>?",
     function()
-      helper.builtin("live_grep")
+      ui.telescope.builtin("live_grep")
     end,
     desc = "Current directory fuzzy find",
   },
   {
     "<Leader>v",
     function()
-      helper.ext("file_browser", { path = "~/.config/nvim/lua" })
+      ui.telescope.ext("file_browser", { path = "~/.config/nvim/lua" })
     end,
     "Open vim config directory",
   },
   {
     '<Leader>"',
     function()
-      helper.builtin("registers")
+      ui.telescope.builtin("registers")
     end,
     desc = "Fuzzy find register",
   },
   {
     "<Leader>.",
     function()
-      helper.builtin("resume")
+      ui.telescope.builtin("resume")
     end,
     desc = "Resume last search",
   },
   {
     "<Leader>>",
     function()
-      helper.builtin("pickers")
+      ui.telescope.builtin("pickers")
     end,
     desc = "Search last pickers",
   },
   {
     "<Leader>v",
     function()
-      helper.ext("file_browser", { path = "~/.config/nvim/lua" })
+      ui.telescope.ext("file_browser", { path = "~/.config/nvim/lua" })
     end,
     desc = "Open vim config directory",
   },
